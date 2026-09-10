@@ -1,0 +1,15 @@
+node_modules/
+**/node_modules/
+.git/
+.github/
+.wrangler/
+you-in-music-v2-backup/
+you-in-music-cloudflare-ready/
+package.json
+bun.lock
+package-lock.json
+wrangler.jsonc
+README.md
+README-CLOUDFLARE.md
+Dockerfile
+nginx.conf
