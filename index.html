@@ -1,802 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>You In Music / Home</title>
-    <link rel="stylesheet" href="./you-in-music.css" />
-  </head>
-  <body>
-    <header class="topbar">
-      <div class="brand-lockup">
-        <strong>You In Music</strong>
-        <span>Custom songs for what words could not hold</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08070d" />
+  <title>You In Music | Some memories have a soundtrack</title>
+  <link rel="stylesheet" href="./you-in-music.css" />
+</head>
+<body class="home-v2">
+  <header class="v2-nav">
+    <a class="v2-brand" href="./you-in-music-home.html" aria-label="You In Music home">
+      <span class="v2-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <span><strong>You In Music</strong><small>made from a life, not a template</small></span>
+    </a>
+    <nav class="v2-links" aria-label="Main navigation">
+      <a href="#listen">Listen</a>
+      <a href="./you-in-music-community.html">Community</a>
+      <a href="./you-in-music-process.html">How it works</a>
+      <a href="./you-in-music-gift.html">Gift one</a>
+      <a class="v2-pill" href="./you-in-music-journey.html">Make my song</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="v2-hero">
+      <div class="v2-ambient" aria-hidden="true">
+        <span class="orb orb-a"></span><span class="orb orb-b"></span><span class="orb orb-c"></span>
+        <span class="ring ring-a"></span><span class="ring ring-b"></span>
       </div>
-      <div class="top-links">
-        <a class="active" href="./you-in-music-home.html">Home</a>
-        <a href="./you-in-music-journey.html">Start Your Song</a>
-        <a href="./you-in-music-options.html">Song Options</a>
-        <a href="./you-in-music-gift.html">Gift a Song</a>
-        <a href="./you-in-music-community.html">Community</a>
-        <a href="./you-in-music-process.html">How It Works</a>
-        <a class="primary-button" href="./you-in-music-journey.html">Begin</a>
+
+      <div class="v2-hero-copy">
+        <p class="v2-overline">YOUR PEOPLE · YOUR YEARS · YOUR SOUND</p>
+        <h1>Some memories<br />have a <em>soundtrack.</em></h1>
+        <p class="v2-lede">You In Music turns the things that are hard to explain into songs that sound like they actually belong to somebody. Your somebody. Your story. Your weird little details included.</p>
+        <div class="v2-actions">
+          <a class="v2-cta" href="./you-in-music-journey.html">Start with a memory <span>→</span></a>
+          <a class="v2-text-link" href="#listen">Hear what this can become</a>
+        </div>
       </div>
-    </header>
 
-    <main>
-      <section class="page hero">
-        <div class="hero-copy">
-          <div class="eyebrow">Your people. Your story. Your sound.</div>
-          <h1>You In Music</h1>
-          <p>
-            Turn a memory, a thank you, or a whole new chapter into a personal song.
-            Find a sound you love, then tell us what makes it yours.
-          </p>
-          <div class="hero-actions">
-            <a class="primary-button" href="./you-in-music-journey.html">Start Your Song</a>
-            <a class="secondary-button" href="#listen">Find Your Sound</a>
-          </div>
-          <div class="hero-hint">A little joy. A big feeling. A song only you could inspire.</div>
+      <div class="v2-record" aria-label="Decorative spinning record">
+        <div class="v2-record-lines"></div>
+        <div class="v2-record-label">
+          <span>YOU</span>
+          <strong>IN<br />MUSIC</strong>
+          <small>01 · YOUR STORY</small>
         </div>
+      </div>
 
-        <div class="hero-visual">
-          <div class="hero-photo-wrap">
-            <img
-              src="https://images.pexels.com/photos/32444196/pexels-photo-32444196.jpeg?cs=srgb&dl=pexels-jay-soundo-2148060180-32444196.jpg&fm=jpg"
-              alt="Portrait lit in violet and rose"
-            />
-          </div>
-          <div class="floating-line">
-            <div class="quote-mark">01</div>
-            <strong>You could make a song anywhere.</strong>
-            <p>You came here because you want the song to understand who it belongs to.</p>
-          </div>
-          <div class="floating-note">
-            <div class="quote-mark">02</div>
-            <strong>This can hold more than sadness.</strong>
-            <p>Love. gratitude. swagger. closure. devotion. becoming. home.</p>
-          </div>
-        </div>
-      </section>
+      <div class="v2-scroll-note">scroll into the story <span>↓</span></div>
+    </section>
 
-      <section class="section listening-section page" id="listen" data-listening-room></section>
+    <section class="v2-marquee" aria-label="Examples of moments worth turning into songs">
+      <div>FIRST LOVE · THE DRIVE HOME · DAD'S TERRIBLE JOKE · 2:17 AM · THE COMEBACK · YOUR KIDS IN THE BACKSEAT · THE ONE YOU NEVER SENT · HOME ·</div>
+    </section>
 
-      <section class="section band">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">Choose your doorway</div>
-            <h2>What are you celebrating, feeling, or remembering?</h2>
-            <p>
-              A big milestone or a tiny moment that stayed with you. There is a song in both.
-            </p>
-          </div>
+    <section class="v2-section v2-listen" id="listen">
+      <div class="v2-section-intro">
+        <p class="v2-overline">PRESS PLAY FIRST</p>
+        <h2>Find the sound that pulls at your sleeve.</h2>
+        <p>Do not worry about naming a genre perfectly. Listen for the feeling. Pick the one that makes your brain go, “that. That thing.”</p>
+      </div>
+      <div data-listening-room></div>
+    </section>
 
-          <div class="doorway-grid">
-            <article class="doorway-card section-link-card">
-              <div class="doorway-tone">Celebration</div>
-              <strong>Birthday glow</strong>
-              <p>A song that feels like the best version of someone getting seen on purpose.</p>
-              <a class="secondary-button" href="./you-in-music-gift.html">Open this path</a>
-            </article>
-            <article class="doorway-card section-link-card">
-              <div class="doorway-tone">Devotion</div>
-              <strong>Big love</strong>
-              <p>Soft, cinematic, obsessed in a beautiful way, and built for the person it names.</p>
-              <a class="secondary-button" href="./you-in-music-journey.html">Open this path</a>
-            </article>
-            <article class="doorway-card section-link-card">
-              <div class="doorway-tone">Becoming</div>
-              <strong>Main character comeback</strong>
-              <p>For surviving something, finding your nerve again, and sounding like you mean it.</p>
-              <a class="secondary-button" href="./you-in-music-journey.html">Open this path</a>
-            </article>
-            <article class="doorway-card section-link-card">
-              <div class="doorway-tone">Grief</div>
-              <strong>Tribute with grace</strong>
-              <p>Memory-rich, careful, and made to hold someone without flattening them.</p>
-              <a class="secondary-button" href="./you-in-music-options.html">Open this path</a>
-            </article>
-            <article class="doorway-card section-link-card">
-              <div class="doorway-tone">Night drive</div>
-              <strong>Late-night confession</strong>
-              <p>Messy honesty, neon feelings, and the sentence they have been rehearsing for weeks.</p>
-              <a class="secondary-button" href="./you-in-music-journey.html">Open this path</a>
-            </article>
-            <article class="doorway-card section-link-card">
-              <div class="doorway-tone">Home</div>
-              <strong>Missing somewhere</strong>
-              <p>For distance, family, old rooms, old streets, and the ache of being between versions.</p>
-              <a class="secondary-button" href="./you-in-music-community.html">Open this path</a>
-            </article>
-            <article class="doorway-card section-link-card">
-              <div class="doorway-tone">Desire</div>
-              <strong>Hot and unwise</strong>
-              <p>For chemistry, flirtation, risk, and songs that should smirk a little.</p>
-              <a class="secondary-button" href="./you-in-music-options.html">Open this path</a>
-            </article>
-            <article class="doorway-card section-link-card">
-              <div class="doorway-tone">Gratitude</div>
-              <strong>Thank you I never said</strong>
-              <p>For mentors, parents, best friends, teachers, and love that changed the shape of a life.</p>
-              <a class="secondary-button" href="./you-in-music-gift.html">Open this path</a>
-            </article>
-          </div>
-        </div>
-      </section>
+    <section class="v2-section v2-memory-section">
+      <div class="v2-section-intro wide">
+        <p class="v2-overline">START WHERE IT HURTS, GLOWS, OR GETS WEIRD</p>
+        <h2>A life is not organized into neat little genres.</h2>
+      </div>
 
-      <section class="section band">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">What this can be for</div>
-            <h2>The site should make the use cases feel alive immediately.</h2>
-          </div>
+      <div class="v2-memory-grid">
+        <a class="memory-tile tile-large" href="./you-in-music-journey.html">
+          <span class="memory-number">01</span>
+          <div><small>LOVE</small><strong>The person who changed the temperature of the room.</strong><p>Anniversaries, devotion, vows, first dances, impossible crushes.</p></div>
+          <b>Open memory →</b>
+        </a>
+        <a class="memory-tile" href="./you-in-music-gift.html">
+          <span class="memory-number">02</span>
+          <div><small>FAMILY</small><strong>The stories only your people understand.</strong><p>Parents, kids, siblings, chosen family, the stuff nobody writes down.</p></div>
+          <b>Open memory →</b>
+        </a>
+        <a class="memory-tile tile-accent" href="./you-in-music-journey.html">
+          <span class="memory-number">03</span>
+          <div><small>BECOMING</small><strong>Your comeback deserves better than a motivational quote.</strong><p>Recovery, reinvention, survival, swagger, finally choosing yourself.</p></div>
+          <b>Open memory →</b>
+        </a>
+        <a class="memory-tile" href="./you-in-music-options.html">
+          <span class="memory-number">04</span>
+          <div><small>REMEMBERING</small><strong>Keep the laugh, the habit, the phrase, the tiny human detail.</strong><p>Tributes made to sound like a person lived, not like a sympathy card.</p></div>
+          <b>Open memory →</b>
+        </a>
+        <a class="memory-tile tile-wide" href="./you-in-music-community.html">
+          <span class="memory-number">05</span>
+          <div><small>THE UNCLASSIFIABLE ONES</small><strong>The kitchen dance. The midnight drive. The ridiculous summer. The song no category can contain.</strong></div>
+          <b>Bring yours →</b>
+        </a>
+      </div>
+    </section>
 
-          <div class="use-grid">
-            <article class="metric-card">
-              <div class="metric-label">For lovers</div>
-              <div class="metric-value">01</div>
-              <p>Anniversaries, vows, confessions, and the kind of love that deserves a custom language.</p>
-            </article>
-            <article class="metric-card">
-              <div class="metric-label">For healing</div>
-              <div class="metric-value">02</div>
-              <p>Breakups, closure, grief, forgiveness, and surviving the year that split them open.</p>
-            </article>
-            <article class="metric-card">
-              <div class="metric-label">For identity</div>
-              <div class="metric-value">03</div>
-              <p>Comebacks, birthdays, reinventions, confidence songs, and finally hearing yourself clearly.</p>
-            </article>
-            <article class="metric-card">
-              <div class="metric-label">For gifts</div>
-              <div class="metric-value">04</div>
-              <p>For the people who matter enough that a normal gift feels a little too small.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+    <section class="v2-community-preview">
+      <div class="community-stars" aria-hidden="true">
+        <i style="--x:12%;--y:24%;--s:8px"></i><i style="--x:24%;--y:65%;--s:13px"></i><i style="--x:41%;--y:29%;--s:7px"></i><i style="--x:58%;--y:70%;--s:10px"></i><i style="--x:73%;--y:19%;--s:6px"></i><i style="--x:87%;--y:53%;--s:12px"></i><i style="--x:66%;--y:41%;--s:5px"></i>
+      </div>
+      <div class="v2-community-copy">
+        <p class="v2-overline">THE LISTENING CONSTELLATION</p>
+        <h2>One song is personal.<br />A thousand become a map.</h2>
+        <p>The community is where private little universes brush against each other. Explore songs people chose to share, find the feeling that sounds familiar, and leave a light on for someone else.</p>
+        <a class="v2-cta light" href="./you-in-music-community.html">Enter the community <span>→</span></a>
+      </div>
+      <div class="v2-quote-orbit">
+        <span class="quote-dot dot-one">“for my boys”</span>
+        <span class="quote-dot dot-two">“the year I came back”</span>
+        <span class="quote-dot dot-three">“our first apartment”</span>
+        <span class="quote-dot dot-four">“mom's kitchen”</span>
+        <div class="orbit-center">YOU<br /><small>are here</small></div>
+      </div>
+    </section>
 
-      <section class="section band" id="how">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">How it works</div>
-            <h2>A song made from what is underneath.</h2>
-          </div>
+    <section class="v2-section v2-process-preview">
+      <div class="v2-section-intro">
+        <p class="v2-overline">NO SONGWRITING DEGREE REQUIRED</p>
+        <h2>You bring the truth.<br />We build the song around it.</h2>
+      </div>
+      <div class="v2-process-row">
+        <article><span>01</span><strong>Follow the feeling</strong><p>Choose a sound or simply tell us what this song needs to do to you.</p></article>
+        <article><span>02</span><strong>Tell the real story</strong><p>Our guided prompts pull out names, moments, phrases, places and tiny details.</p></article>
+        <article><span>03</span><strong>Make it unmistakably yours</strong><p>We shape those details into a song built for the person and moment behind it.</p></article>
+        <article><span>04</span><strong>Keep it or give it</strong><p>Private by default. Share it only if you want your little light added to the map.</p></article>
+      </div>
+      <div class="v2-centered-action"><a class="v2-cta" href="./you-in-music-journey.html">Okay, let's make mine <span>→</span></a></div>
+    </section>
 
-          <div class="grid-3">
-            <article class="process-step">
-              <div class="process-count">01</div>
-              <strong>You choose the doorway</strong>
-              <p>Love, gratitude, tribute, comeback, closure, devotion, flirtation, or something harder to name.</p>
-            </article>
-            <article class="process-step">
-              <div class="process-count">02</div>
-              <strong>You give the emotional truth</strong>
-              <p>A guided intake makes it easier to say what happened without having to sound polished.</p>
-            </article>
-            <article class="process-step">
-              <div class="process-count">03</div>
-              <strong>You receive a song that lands</strong>
-              <p>Private delivery, clean checkout, and a final piece that feels specific instead of mass-made.</p>
-            </article>
-          </div>
-        </div>
-      </section>
+    <section class="v2-final">
+      <p class="v2-overline">YOU ALREADY HAVE THE STORY</p>
+      <h2>It has probably been<br />playing for years.</h2>
+      <a href="./you-in-music-journey.html">Turn it into a song <span>↗</span></a>
+    </section>
+  </main>
 
-      <section class="section band">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">Journey preview</div>
-            <h2>Show the guided intake on the homepage, but keep the deeper room paid.</h2>
-            <p>
-              This lets the visitor feel seen before you ask them to commit.
-            </p>
-          </div>
+  <footer class="v2-footer">
+    <div class="v2-brand"><span class="v2-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span><strong>You In Music</strong><small>some memories have a soundtrack</small></span></div>
+    <div class="v2-footer-links"><a href="./you-in-music-options.html">Options</a><a href="./you-in-music-gift.html">Gift</a><a href="./you-in-music-community.html">Community</a><a href="./you-in-music-process.html">Process</a></div>
+    <small>Made for humans with complicated feelings.</small>
+  </footer>
 
-          <div class="builder-wrap">
-            <div class="builder-panel">
-              <h3>Tell me what the feeling is doing.</h3>
-
-              <div class="question-block">
-                <label>How does this song need to feel?</label>
-                <p class="question-caption">Let this range wider than grief so the brand feels expansive.</p>
-                <div class="choice-grid wide" data-group="energy">
-                  <button class="choice-button" data-value="Newly in love">Newly in love</button>
-                  <button class="choice-button active" data-value="Main character comeback">Main character comeback</button>
-                  <button class="choice-button" data-value="Tender gratitude">Tender gratitude</button>
-                  <button class="choice-button" data-value="Quietly breaking">Quietly breaking</button>
-                  <button class="choice-button" data-value="Hot and unwise">Hot and unwise</button>
-                  <button class="choice-button" data-value="Still healing">Still healing</button>
-                </div>
-              </div>
-
-              <div class="question-block">
-                <label>What color is this chapter?</label>
-                <p class="question-caption">The choices can still feel poetic without all landing in midnight.</p>
-                <div class="choice-grid wide" data-group="color">
-                  <button class="choice-button" data-value="Sunlit honey">Sunlit honey</button>
-                  <button class="choice-button" data-value="Neon chaos">Neon chaos</button>
-                  <button class="choice-button" data-value="Soft grey">Soft grey</button>
-                  <button class="choice-button active" data-value="Emerald rebirth">Emerald rebirth</button>
-                  <button class="choice-button" data-value="Gold pretending everything is fine">
-                    Gold pretending everything is fine
-                  </button>
-                  <button class="choice-button" data-value="Midnight">Midnight</button>
-                </div>
-              </div>
-
-              <div class="question-block">
-                <label>Who is this for?</label>
-                <p class="question-caption">Let gifts, self-songs, and relationship songs all feel equally welcome.</p>
-                <div class="choice-grid wide" data-group="forWho">
-                  <button class="choice-button" data-value="Me">Me</button>
-                  <button class="choice-button" data-value="Someone I love">Someone I love</button>
-                  <button class="choice-button active" data-value="The version of me I am becoming">
-                    The version of me I am becoming
-                  </button>
-                  <button class="choice-button" data-value="A best friend">A best friend</button>
-                  <button class="choice-button" data-value="Someone I lost">Someone I lost</button>
-                  <button class="choice-button" data-value="Someone I wish understood">
-                    Someone I wish understood
-                  </button>
-                </div>
-              </div>
-
-              <div class="question-block">
-                <label>The deeper prompt</label>
-                <p class="question-caption">This is where the paid experience begins.</p>
-                <div class="locked-prompt">
-                  <div>
-                    <strong>Tell me what actually happened.</strong>
-                    <p>
-                      The full story box, names, dates, memories, and emotional
-                      specifics open once they choose their song path.
-                    </p>
-                  </div>
-                  <div class="locked-lines" aria-hidden="true">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div class="subtle-note">Unlocked after they choose Spark, Deep Dive, or Signature Piece.</div>
-                </div>
-              </div>
-
-              <div class="button-row">
-                <a class="primary-button" href="./you-in-music-options.html">See My Song Options</a>
-                <a class="secondary-button" href="./you-in-music-journey.html">Open Full Journey</a>
-              </div>
-            </div>
-
-            <aside class="preview-panel">
-              <div class="detail-panel">
-                <strong>Your song profile</strong>
-                <div class="profile-list">
-                  <div class="profile-item">
-                    <span>Energy</span>
-                    <strong id="profileEnergy">Main character comeback</strong>
-                  </div>
-                  <div class="profile-item">
-                    <span>Color</span>
-                    <strong id="profileColor">Emerald rebirth</strong>
-                  </div>
-                  <div class="profile-item">
-                    <span>For</span>
-                    <strong id="profileForWho">The version of me I am becoming</strong>
-                  </div>
-                  <div class="profile-item">
-                    <span>Next unlock</span>
-                    <strong id="profileUnlock">
-                      Full story prompt + layered writing + private checkout
-                    </strong>
-                  </div>
-                </div>
-                <p class="profile-mini-note">
-                  This preview is enough to create desire without giving away the whole intake.
-                </p>
-              </div>
-              <div class="detail-panel">
-                <strong>Where it goes next</strong>
-                <p>
-                  Song options. Quiet paywall. Private checkout. Then the deeper
-                  story prompt opens and the real personal material begins.
-                </p>
-              </div>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <section class="section band" id="tiers">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">Song options</div>
-            <h2>Give them clear paths, clear prices, and language that feels worth paying for.</h2>
-          </div>
-
-          <div class="grid-3">
-            <article class="tier-card" data-tier-card="Spark">
-              <div class="tier-meta">
-                <div class="tier-title">Spark</div>
-                <span class="tier-label">Quick identity song</span>
-              </div>
-              <div class="tier-price-row">
-                <div class="tier-price">$79</div>
-                <div class="tier-delivery">3 day delivery</div>
-              </div>
-              <div class="tier-highlight-box">
-                <p>A short, striking song built from mood, essence, and one sharp emotional center.</p>
-              </div>
-              <div class="tier-points">
-                <span>Name, vibe, and identity hook</span>
-                <span>Private preview link</span>
-                <span>One revision pass</span>
-                <span>Great for birthdays, gifts, and confidence songs</span>
-              </div>
-              <div class="tier-perfect-for">Perfect for: a first order, a gift moment, or a quick emotional mirror.</div>
-              <a class="tier-button tier-select" data-tier="Spark" href="./you-in-music-checkout.html?tier=Spark">Choose Spark</a>
-            </article>
-
-            <article class="tier-card is-selected" data-tier-card="Deep Dive">
-              <div class="featured-pill">Most chosen</div>
-              <div class="tier-meta">
-                <div class="tier-title">Deep Dive</div>
-                <span class="tier-label">Story included</span>
-              </div>
-              <div class="tier-price-row">
-                <div class="tier-price">$179</div>
-                <div class="tier-delivery">5 day delivery</div>
-              </div>
-              <div class="tier-highlight-box">
-                <p>The full story enters the lyric. More emotional layering. More detail. More staying power.</p>
-              </div>
-              <div class="tier-points">
-                <span>Full story intake unlocked</span>
-                <span>Emotionally layered lyric writing</span>
-                <span>Two revision passes</span>
-                <span>Best balance of intimacy and depth</span>
-              </div>
-              <div class="tier-perfect-for">Perfect for: heartbreak, healing, gratitude, tributes, and real transformation.</div>
-              <a class="tier-button tier-select" data-tier="Deep Dive" href="./you-in-music-checkout.html?tier=Deep%20Dive">Choose Deep Dive</a>
-            </article>
-
-            <article class="tier-card" data-tier-card="Signature Piece">
-              <div class="tier-meta">
-                <div class="tier-title">Signature Piece</div>
-                <span class="tier-label">Fully custom</span>
-              </div>
-              <div class="tier-price-row">
-                <div class="tier-price">$349</div>
-                <div class="tier-delivery">7 to 10 days</div>
-              </div>
-              <div class="tier-highlight-box">
-                <p>Specific memories, names, imagery, and emotional architecture woven into a piece that lasts.</p>
-              </div>
-              <div class="tier-points">
-                <span>Premium custom writing</span>
-                <span>Priority creative attention</span>
-                <span>Two revision passes</span>
-                <span>Full rights upgrade available</span>
-              </div>
-              <div class="tier-perfect-for">Perfect for: legacy songs, vows, tributes, and the moments people keep forever.</div>
-              <a class="tier-button tier-select" data-tier="Signature Piece" href="./you-in-music-checkout.html?tier=Signature%20Piece">Choose Signature Piece</a>
-            </article>
-          </div>
-
-          <div class="paywall-banner">
-            <strong>The paywall moment</strong>
-            <p>
-              The emotional doorway is free. The full story prompt, private
-              checkout, and layered customization are what people unlock when they choose a path.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section band">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">Example pathways</div>
-            <h2>Show them what each route is best at.</h2>
-          </div>
-
-          <div class="page-links-grid">
-            <article class="doorway-card section-link-card">
-              <div class="link-kicker">Spark</div>
-              <strong>Birthday glow-up song</strong>
-              <p>Short, bold, flattering, and built to make someone feel iconic in under two minutes.</p>
-              <a class="secondary-button" href="./you-in-music-checkout.html?tier=Spark">Take this route</a>
-            </article>
-            <article class="doorway-card section-link-card">
-              <div class="link-kicker">Deep Dive</div>
-              <strong>Breakup, healing, or thank-you song</strong>
-              <p>Enough space for real emotional movement without needing the full legacy treatment.</p>
-              <a class="secondary-button" href="./you-in-music-checkout.html?tier=Deep%20Dive">Take this route</a>
-            </article>
-            <article class="doorway-card section-link-card">
-              <div class="link-kicker">Signature Piece</div>
-              <strong>Tribute, vow, or forever song</strong>
-              <p>Specific memories and custom detail for the things people are going to replay for years.</p>
-              <a class="secondary-button" href="./you-in-music-checkout.html?tier=Signature%20Piece">Take this route</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section band">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">Gift a song</div>
-            <h2>Let gifting feel like its own beautiful lane.</h2>
-          </div>
-
-          <div class="spotlight-shell">
-            <article class="spotlight-panel">
-              <div class="mini-head">Occasions that work beautifully</div>
-              <ul class="list-clean">
-                <li>Birthday songs that sound like a mirror instead of a novelty gift</li>
-                <li>Wedding and anniversary songs with real details woven in</li>
-                <li>Tributes for mentors, mothers, fathers, and best friends</li>
-                <li>Apology songs when ordinary words are not carrying the weight</li>
-              </ul>
-              <div class="button-row">
-                <a class="primary-button" href="./you-in-music-gift.html">Explore Gift Flow</a>
-                <a class="secondary-button" href="./you-in-music-checkout.html?tier=Signature%20Piece&gift=1">Gift Signature Piece</a>
-              </div>
-            </article>
-            <article class="spotlight-panel">
-              <div class="note-quote">Some gifts say "I saw you" better than objects ever do.</div>
-              <p>
-                Give this section enough gravity that gifting feels intentional,
-                not like a side note hidden under the main offer.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section band">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">Community pulse</div>
-            <h2>Show what people are feeling right now without breaking privacy.</h2>
-          </div>
-
-          <div class="metric-grid">
-            <article class="metric-card">
-              <div class="metric-label">Most requested mood</div>
-              <div class="metric-value">Comeback</div>
-              <p>People want songs for becoming, not only songs for breaking.</p>
-            </article>
-            <article class="metric-card">
-              <div class="metric-label">Favorite color this week</div>
-              <div class="metric-value">Honey</div>
-              <p>Warmth and softness are outnumbering midnight for once.</p>
-            </article>
-            <article class="metric-card">
-              <div class="metric-label">Most gifted occasion</div>
-              <div class="metric-value">Birthday</div>
-              <p>Personal celebration is a very alive entry point for the brand.</p>
-            </article>
-            <article class="metric-card">
-              <div class="metric-label">Quiet truth</div>
-              <div class="metric-value">Closure</div>
-              <p>People are still bringing the things they never got to say.</p>
-            </article>
-          </div>
-
-          <div class="page-banner" style="margin-top: 18px;">
-            <strong>Anonymous feeling wall</strong>
-            <div class="pill-list" style="margin-top: 12px;">
-              <span class="pulse-pill">for the version of me that finally left</span>
-              <span class="pulse-pill">for the girl who became the room</span>
-              <span class="pulse-pill">for missing home without wanting to go back</span>
-              <span class="pulse-pill">for saying thank you before it is too late</span>
-            </div>
-            <div class="button-row" style="margin-top: 16px;">
-              <a class="secondary-button" href="./you-in-music-community.html">Open Community Page</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section band" id="gallery">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">Song of the day</div>
-            <h2>A spotlight section makes the site feel lived in.</h2>
-          </div>
-
-          <div class="gallery">
-            <article class="story-card">
-              <div class="story-media">
-                <img
-                  src="https://images.pexels.com/photos/11276912/pexels-photo-11276912.jpeg?cs=srgb&dl=pexels-iriser-11276912.jpg&fm=jpg"
-                  alt="Microphone in neon light"
-                />
-              </div>
-              <div class="example-fit">Song of the day</div>
-              <strong>For the girl who finally picked herself</strong>
-              <p>A comeback piece that sounds like silk and steel at the same time.</p>
-              <button class="tiny-button" type="button">Hear 0:31</button>
-            </article>
-
-            <article class="story-card">
-              <div class="story-media">
-                <img
-                  src="https://images.pexels.com/photos/3574678/pexels-photo-3574678.jpeg?cs=srgb&dl=pexels-nardo-1870916-3574678.jpg&fm=jpg"
-                  alt="Listening in headphones"
-                />
-              </div>
-              <div class="example-fit">Best fit: Spark</div>
-              <strong>For the birthday girl with dangerous confidence</strong>
-              <p>Bright, flirtatious, flattering, and gone before it ever gets boring.</p>
-              <button class="tiny-button" type="button">Hear 0:24</button>
-            </article>
-
-            <article class="story-card">
-              <div class="story-media">
-                <img
-                  src="https://images.pexels.com/photos/10992552/pexels-photo-10992552.jpeg?cs=srgb&dl=pexels-johnhoward-10992552.jpg&fm=jpg"
-                  alt="Silhouette under moonlight"
-                />
-              </div>
-              <div class="example-fit">Best fit: Signature Piece</div>
-              <strong>For the father she still talks to at stoplights</strong>
-              <p>Gentle tribute writing that carries memory without flattening it into cliche.</p>
-              <button class="tiny-button" type="button">Hear 0:39</button>
-            </article>
-
-            <article class="story-card">
-              <div class="story-media">
-                <img
-                  src="https://images.pexels.com/photos/6037391/pexels-photo-6037391.jpeg?cs=srgb&dl=pexels-cottonbro-6037391.jpg&fm=jpg"
-                  alt="Writing by candlelight"
-                />
-              </div>
-              <div class="example-fit">Best fit: Deep Dive</div>
-              <strong>For the mentor who changed everything</strong>
-              <p>Gratitude writing that feels adult, sincere, and impossible to fake.</p>
-              <button class="tiny-button" type="button">Hear 0:36</button>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section band">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">Founder note</div>
-            <h2>There should be one place on the site where the listener speaks plainly.</h2>
-          </div>
-
-          <div class="spotlight-shell">
-            <article class="spotlight-panel">
-              <div class="note-quote">I am not here to mass-produce sound. I am here to listen for the sentence inside the feeling.</div>
-            </article>
-            <article class="spotlight-panel">
-              <p>
-                This note should stay short. It is just long enough to make the
-                whole site feel held by a real person with taste, restraint, and
-                ears.
-              </p>
-              <a class="secondary-button" href="./you-in-music-process.html">Read the process</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section band">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">Trust and delivery</div>
-            <h2>Private. Gentle. Clear when it matters.</h2>
-          </div>
-
-          <div class="signal-grid">
-            <article class="signal-card">
-              <strong>Private link delivery</strong>
-              <p>Your song arrives discreetly, not as a blast of confusing files and attachments.</p>
-            </article>
-            <article class="signal-card">
-              <strong>Rights handled simply</strong>
-              <p>Rights stay reserved by default. Full rights buyout lives as a clean upgrade.</p>
-            </article>
-            <article class="signal-card">
-              <strong>Stories treated like confidences</strong>
-              <p>The intake should sound safe because it actually is safe.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section band">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">Smart upgrades</div>
-            <h2>Use add-ons to deepen value, not to clutter the room.</h2>
-          </div>
-
-          <div class="grid-4">
-            <article class="card">
-              <strong>Full rights buyout</strong>
-              <p>Offer total ownership only when they need it and let it feel premium.</p>
-            </article>
-            <article class="card">
-              <strong>Rush delivery</strong>
-              <p>Good for birthdays, surprise gifts, and the people who decide emotionally and fast.</p>
-            </article>
-            <article class="card">
-              <strong>Voice note intake</strong>
-              <p>For the visitors who can say it out loud more easily than they can type it.</p>
-            </article>
-            <article class="card">
-              <strong>Gift-ready presentation</strong>
-              <p>Wrap the delivery like something someone would actually want to receive.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section band">
-        <div class="page">
-          <div class="section-head">
-            <div class="kicker">Practical reassurance</div>
-            <h2>Questions people ask right before they trust something tender.</h2>
-          </div>
-
-          <div class="faq-grid">
-            <article class="faq-panel">
-              <details open>
-                <summary>Do I need to know exactly what I want?</summary>
-                <p>No. The site should help people discover the shape of it as they answer.</p>
-              </details>
-              <details>
-                <summary>Can this be a happy song too?</summary>
-                <p>Yes. Celebration, devotion, confidence, gratitude, and gift songs should all feel native here.</p>
-              </details>
-              <details>
-                <summary>When does payment happen?</summary>
-                <p>After the emotional doorway and before the deeper story prompt opens.</p>
-              </details>
-              <details>
-                <summary>Can I buy full rights?</summary>
-                <p>Yes. Rights stay reserved by default and can be upgraded when needed.</p>
-              </details>
-            </article>
-
-            <article class="faq-panel">
-              <details open>
-                <summary>Can this be for someone else?</summary>
-                <p>Absolutely. Gifts, tributes, birthdays, vows, and thank-you songs all deserve their own lane.</p>
-              </details>
-              <details>
-                <summary>What if I cannot explain the feeling well?</summary>
-                <p>That is the point of the intake. It should meet people before they become eloquent.</p>
-              </details>
-              <details>
-                <summary>Will my story stay private?</summary>
-                <p>Yes. The site should repeat that promise in plain language, not only in fine print.</p>
-              </details>
-              <details>
-                <summary>How long does it take?</summary>
-                <p>Delivery varies by tier, but the page should always lead with clarity rather than speed theater.</p>
-              </details>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="page closing-cta" id="final">
-        <div class="eyebrow">The threshold</div>
-        <h2>Tell me what it feels like. I will meet you there.</h2>
-        <p>
-          You do not need polished language. You just need a starting point honest enough to hold.
-        </p>
-        <div class="button-row">
-          <a class="primary-button" href="./you-in-music-journey.html">Start Your Song</a>
-          <a class="secondary-button" href="./you-in-music-options.html">Choose Your Song Path</a>
-        </div>
-      </section>
-
-      <footer class="footer-band">
-        <div class="footer-grid">
-          <div class="footer-panel">
-            <strong>You In Music</strong>
-            <p class="footer-small">
-              Custom songs for celebration, grief, gratitude, desire, devotion,
-              identity, memory, and all the strange rooms between.
-            </p>
-          </div>
-          <div class="footer-panel">
-            <strong>Start</strong>
-            <div class="footer-links">
-              <a href="./you-in-music-journey.html">Start Your Song</a>
-              <a href="./you-in-music-options.html">Song Options</a>
-              <a href="./you-in-music-checkout.html">Checkout</a>
-            </div>
-          </div>
-          <div class="footer-panel">
-            <strong>Explore</strong>
-            <div class="footer-links">
-              <a href="./you-in-music-gift.html">Gift a Song</a>
-              <a href="./you-in-music-community.html">Community</a>
-              <a href="./you-in-music-process.html">Process</a>
-            </div>
-          </div>
-          <div class="footer-panel">
-            <strong>Promise</strong>
-            <div class="footer-links">
-              <a href="./you-in-music-process.html#privacy">Privacy</a>
-              <a href="./you-in-music-process.html#rights">Rights</a>
-              <a href="./you-in-music-process.html#delivery">Delivery</a>
-            </div>
-          </div>
-        </div>
-      </footer>
-    </main>
-
-    <script>
-      const state = {
-        energy: "Main character comeback",
-        color: "Emerald rebirth",
-        forWho: "The version of me I am becoming",
-        selectedTier: "Deep Dive"
-      };
-
-      const tierData = {
-        Spark: {
-          profile: "Core truth prompt + concise song brief + private checkout"
-        },
-        "Deep Dive": {
-          profile: "Full story prompt + layered writing + private checkout"
-        },
-        "Signature Piece": {
-          profile: "Memory-rich intake + premium writing + private checkout"
-        }
-      };
-
-      const profileEnergy = document.getElementById("profileEnergy");
-      const profileColor = document.getElementById("profileColor");
-      const profileForWho = document.getElementById("profileForWho");
-      const profileUnlock = document.getElementById("profileUnlock");
-      const soundToggle = document.getElementById("soundToggle");
-
-      function renderState() {
-        profileEnergy.textContent = state.energy;
-        profileColor.textContent = state.color;
-        profileForWho.textContent = state.forWho;
-        profileUnlock.textContent = tierData[state.selectedTier].profile;
-
-        document.querySelectorAll("[data-tier-card]").forEach((card) => {
-          card.classList.toggle("is-selected", card.dataset.tierCard === state.selectedTier);
-        });
-      }
-
-      document.querySelectorAll("[data-group]").forEach((group) => {
-        group.addEventListener("click", (event) => {
-          const button = event.target.closest(".choice-button");
-          if (!button) return;
-
-          group.querySelectorAll(".choice-button").forEach((item) => {
-            item.classList.remove("active");
-          });
-
-          button.classList.add("active");
-          state[group.dataset.group] = button.dataset.value;
-          renderState();
-        });
-      });
-
-      document.querySelectorAll("[data-tier]").forEach((control) => {
-        control.addEventListener("click", () => {
-          state.selectedTier = control.dataset.tier;
-          renderState();
-        });
-      });
-
-      renderState();
-    </script>
-    <script src="./you-in-music-listen.js"></script>
-  </body>
+  <script src="./you-in-music-listen.js"></script>
+</body>
 </html>
