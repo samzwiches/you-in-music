@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You In Music / Gift a Song</title>
+    <link rel="stylesheet" href="./you-in-music.css" />
+  </head>
+  <body class="inner-page inner-gift">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <strong>You In Music</strong>
+        <span>Gift a song</span>
+      </div>
+      <div class="top-links">
+        <a href="./you-in-music-home.html">Home</a>
+        <a href="./you-in-music-journey.html">Start Your Song</a>
+        <a href="./you-in-music-options.html">Song Options</a>
+        <a class="active" href="./you-in-music-gift.html">Gift a Song</a>
+        <a href="./you-in-music-community.html">Community</a>
+        <a href="./you-in-music-process.html">Process</a>
+        <a href="./you-in-music-checkout.html">Checkout</a>
+        <button class="sound-toggle" type="button" id="soundToggle">Ambient mood: muted</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero compact">
+        <div class="page-hero-copy">
+          <div class="eyebrow">Gift a Song</div>
+          <h1>For when a normal gift feels a little too small.</h1>
+          <p>
+            This page gives the gifting path its own dignity. It should feel less
+            like an add-on and more like one of the most human reasons the brand exists.
+          </p>
+          <div class="button-row">
+            <a class="primary-button" href="./you-in-music-checkout.html?tier=Signature%20Piece&gift=1">Gift Signature Piece</a>
+            <a class="secondary-button" href="./you-in-music-checkout.html?tier=Deep%20Dive&gift=1">Gift Deep Dive</a>
+          </div>
+        </div>
+        <div class="page-hero-visual">
+          <img
+            src="https://images.pexels.com/photos/3574678/pexels-photo-3574678.jpeg?cs=srgb&dl=pexels-nardo-1870916-3574678.jpg&fm=jpg"
+            alt="Person listening in headphones"
+          />
+        </div>
+      </section>
+
+      <section class="section band">
+        <div class="page">
+          <div class="doorway-grid">
+            <article class="doorway-card">
+              <div class="doorway-tone">Birthday</div>
+              <strong>Make them feel iconic</strong>
+              <p>For celebration songs that sound flattering, alive, and personal instead of novelty.</p>
+            </article>
+            <article class="doorway-card">
+              <div class="doorway-tone">Wedding</div>
+              <strong>Say the thing vows still leave out</strong>
+              <p>For devotion, origin story details, and the pieces people replay on anniversaries.</p>
+            </article>
+            <article class="doorway-card">
+              <div class="doorway-tone">Thank you</div>
+              <strong>Honor the person who changed your life</strong>
+              <p>For mentors, parents, teachers, and best friends who deserve more than a card.</p>
+            </article>
+            <article class="doorway-card">
+              <div class="doorway-tone">Tribute</div>
+              <strong>Keep someone close</strong>
+              <p>For memory songs that need tenderness and real detail.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section band">
+        <div class="page">
+          <div class="preview-columns">
+            <article class="detail-panel">
+              <strong>Best gift tiers</strong>
+              <ul class="list-clean">
+                <li><strong>Spark</strong> for birthdays, praise songs, and bright fast gifts</li>
+                <li><strong>Deep Dive</strong> for thank-you songs, apologies, and emotionally rich surprises</li>
+                <li><strong>Signature Piece</strong> for weddings, tributes, and forever gifts</li>
+              </ul>
+            </article>
+            <article class="detail-panel">
+              <strong>Gift flow notes</strong>
+              <ul class="list-clean">
+                <li>Let the buyer describe the recipient in their own language</li>
+                <li>Offer a dedication note field after payment</li>
+                <li>Let them choose whether the song goes to them first or directly to the recipient</li>
+                <li>Gift-ready delivery is a real upgrade, not fluff</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="button-row" style="margin-top: 18px;">
+            <a class="primary-button" href="./you-in-music-checkout.html?tier=Signature%20Piece&gift=1">Start Gift Order</a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer-band">
+        <div class="footer-grid">
+          <div class="footer-panel">
+            <strong>You In Music</strong>
+            <p class="footer-small">A song can be a gift, a thank you, a tribute, or an answer to a moment that ordinary objects cannot touch.</p>
+          </div>
+          <div class="footer-panel">
+            <strong>Go next</strong>
+            <div class="footer-links">
+              <a href="./you-in-music-checkout.html?tier=Signature%20Piece&gift=1">Gift Signature Piece</a>
+              <a href="./you-in-music-options.html">Song Options</a>
+            </div>
+          </div>
+          <div class="footer-panel">
+            <strong>Explore</strong>
+            <div class="footer-links">
+              <a href="./you-in-music-community.html">Community</a>
+              <a href="./you-in-music-process.html">Process</a>
+            </div>
+          </div>
+          <div class="footer-panel">
+            <strong>Home</strong>
+            <div class="footer-links">
+              <a href="./you-in-music-home.html">Return Home</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      const soundToggle = document.getElementById("soundToggle");
+      soundToggle.addEventListener("click", () => {
+        const muted = soundToggle.textContent.includes("muted");
+        soundToggle.textContent = muted ? "Ambient mood: on" : "Ambient mood: muted";
+      });
+    </script>
+  </body>
+</html>

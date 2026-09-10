@@ -1,0 +1,8 @@
+{
+  "name": "you-in-music",
+  "compatibility_date": "2026-09-10",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash"
+  }
+}

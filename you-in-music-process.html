@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>You In Music / Process</title>
+    <link rel="stylesheet" href="./you-in-music.css" />
+  </head>
+  <body class="inner-page inner-process">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <strong>You In Music</strong>
+        <span>Process, privacy, rights, delivery</span>
+      </div>
+      <div class="top-links">
+        <a href="./you-in-music-home.html">Home</a>
+        <a href="./you-in-music-journey.html">Start Your Song</a>
+        <a href="./you-in-music-options.html">Song Options</a>
+        <a href="./you-in-music-gift.html">Gift a Song</a>
+        <a href="./you-in-music-community.html">Community</a>
+        <a class="active" href="./you-in-music-process.html">Process</a>
+        <a href="./you-in-music-checkout.html">Checkout</a>
+        <button class="sound-toggle" type="button" id="soundToggle">Ambient mood: muted</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero compact">
+        <div class="page-hero-copy">
+          <div class="eyebrow">Process</div>
+          <h1>The practical page that should still feel human.</h1>
+          <p>
+            This is where delivery, rights, revisions, and privacy live. It
+            should answer real questions without snapping the emotional spell of the brand.
+          </p>
+        </div>
+        <div class="page-hero-visual">
+          <img
+            src="https://images.pexels.com/photos/32444196/pexels-photo-32444196.jpeg?cs=srgb&dl=pexels-jay-soundo-2148060180-32444196.jpg&fm=jpg"
+            alt="Purple neon portrait"
+          />
+        </div>
+      </section>
+
+      <section class="section band">
+        <div class="page">
+          <div class="grid-3">
+            <article class="process-step">
+              <div class="process-count">01</div>
+              <strong>Emotional doorway</strong>
+              <p>They choose their energy, chapter, and who the song is for.</p>
+            </article>
+            <article class="process-step">
+              <div class="process-count">02</div>
+              <strong>Song path + checkout</strong>
+              <p>They choose Spark, Deep Dive, or Signature Piece and unlock the deeper intake.</p>
+            </article>
+            <article class="process-step">
+              <div class="process-count">03</div>
+              <strong>Private delivery</strong>
+              <p>The finished piece arrives quietly with the promised turnaround.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section band" id="rights">
+        <div class="page">
+          <div class="preview-columns">
+            <article class="detail-panel">
+              <strong>Rights</strong>
+              <ul class="list-clean">
+                <li>Rights stay reserved by default</li>
+                <li>Full rights buyout is an optional upgrade</li>
+                <li>Preview links can be watermarked if needed</li>
+              </ul>
+            </article>
+            <article class="detail-panel" id="delivery">
+              <strong>Delivery</strong>
+              <ul class="list-clean">
+                <li>Spark: around 3 days</li>
+                <li>Deep Dive: around 5 days</li>
+                <li>Signature Piece: around 7 to 10 days</li>
+                <li>Rush delivery can be offered when it makes sense</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section band" id="privacy">
+        <div class="page">
+          <div class="spotlight-shell">
+            <article class="spotlight-panel">
+              <strong>Privacy promise</strong>
+              <p>
+                The intake should explicitly say that their story is treated like
+                a confidence. Private details should not be turned into social proof without permission.
+              </p>
+            </article>
+            <article class="spotlight-panel">
+              <strong>Revision promise</strong>
+              <p>
+                Keep revisions simple and tier-based so the visitor knows what kind of collaboration they are buying.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer-band">
+        <div class="footer-grid">
+          <div class="footer-panel">
+            <strong>You In Music</strong>
+            <p class="footer-small">Even the practical page should feel calm, intentional, and close to the voice of the brand.</p>
+          </div>
+          <div class="footer-panel">
+            <strong>Go next</strong>
+            <div class="footer-links">
+              <a href="./you-in-music-options.html">Song Options</a>
+              <a href="./you-in-music-checkout.html">Checkout</a>
+            </div>
+          </div>
+          <div class="footer-panel">
+            <strong>Explore</strong>
+            <div class="footer-links">
+              <a href="./you-in-music-gift.html">Gift a Song</a>
+              <a href="./you-in-music-community.html">Community</a>
+            </div>
+          </div>
+          <div class="footer-panel">
+            <strong>Home</strong>
+            <div class="footer-links">
+              <a href="./you-in-music-home.html">Return Home</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      const soundToggle = document.getElementById("soundToggle");
+      soundToggle.addEventListener("click", () => {
+        const muted = soundToggle.textContent.includes("muted");
+        soundToggle.textContent = muted ? "Ambient mood: on" : "Ambient mood: muted";
+      });
+    </script>
+  </body>
+</html>
