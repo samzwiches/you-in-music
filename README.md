@@ -1,7 +1,13 @@
-# You In Music
+# You In Music Cinematic V3
 
-Upload-ready site bundle.
+This package uses the uploaded slick homepage as the design source of truth.
 
-The homepage and existing shared assets are preserved.
-The Journey, Options, Gift, Community, Process, and Checkout pages contain the V2 upgrades.
-The `public` folder mirrors the deployable site so the current Wrangler assets configuration can serve it.
+Redesigned customer pages:
+- Start Your Song
+- Song Options
+- Gift a Song
+- Community
+- How It Works
+- Checkout
+
+The shared stylesheet includes the cinematic homepage system and the matching V3 interior page system.
