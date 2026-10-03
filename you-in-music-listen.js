@@ -126,7 +126,7 @@
   });
 
   function render() {
-    const current = songs.find(song => song[0] === selected) || songs[0];
+    const current = songs.find(song => song[0] === selected);
 
     document.querySelectorAll('[data-select]').forEach(button => {
       const active = button.dataset.select === selected;
@@ -136,7 +136,7 @@
     });
 
     document.querySelectorAll('[data-listening-status]').forEach(status => {
-      status.textContent = `${current[1]} selected`;
+      status.textContent = current ? `${current[1]} selected` : 'Nothing selected yet. Play a few and notice what pulls you closer.';
     });
   }
 
