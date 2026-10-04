@@ -34,8 +34,8 @@
 
     const ring = document.createElement('span');
     ring.className = 'yim-magic-ring';
-    ring.style.left = \`\${x}px\`;
-    ring.style.top = \`\${y}px\`;
+    ring.style.left = `${x}px`;
+    ring.style.top = `${y}px`;
     layer.appendChild(ring);
     setTimeout(() => ring.remove(), 900);
 
@@ -45,14 +45,14 @@
       const distance = 34 + Math.random() * 78;
       const size = 3 + Math.random() * 5;
       spark.className = 'yim-magic-spark';
-      spark.style.left = \`\${x}px\`;
-      spark.style.top = \`\${y}px\`;
-      spark.style.width = \`\${size}px\`;
-      spark.style.height = \`\${size}px\`;
-      spark.style.setProperty('--dx', \`\${Math.cos(angle) * distance}px\`);
-      spark.style.setProperty('--dy', \`\${Math.sin(angle) * distance}px\`);
-      spark.style.setProperty('--twist', \`\${Math.round(Math.random() * 220 - 110)}deg\`);
-      spark.style.setProperty('--delay', \`\${Math.random() * 75}ms\`);
+      spark.style.left = `${x}px`;
+      spark.style.top = `${y}px`;
+      spark.style.width = `${size}px`;
+      spark.style.height = `${size}px`;
+      spark.style.setProperty('--dx', `${Math.cos(angle) * distance}px`);
+      spark.style.setProperty('--dy', `${Math.sin(angle) * distance}px`);
+      spark.style.setProperty('--twist', `${Math.round(Math.random() * 220 - 110)}deg`);
+      spark.style.setProperty('--delay', `${Math.random() * 75}ms`);
       layer.appendChild(spark);
       setTimeout(() => spark.remove(), 1050);
     }
@@ -71,8 +71,8 @@
     const portal = document.createElement('div');
     portal.className = 'yim-page-portal';
     portal.setAttribute('aria-hidden', 'true');
-    portal.style.setProperty('--portal-x', \`\${point.x}px\`);
-    portal.style.setProperty('--portal-y', \`\${point.y}px\`);
+    portal.style.setProperty('--portal-x', `${point.x}px`);
+    portal.style.setProperty('--portal-y', `${point.y}px`);
     document.body.appendChild(portal);
 
     requestAnimationFrame(() => portal.classList.add('is-open'));
@@ -93,9 +93,9 @@
       note.className = 'yim-vinyl-note';
       note.textContent = symbol;
       const noteAngle = index * 72 + Math.random() * 24;
-      note.style.setProperty('--note-angle', \`\${noteAngle}deg\`);
-      note.style.setProperty('--note-angle-neg', \`\${-noteAngle}deg\`);
-      note.style.setProperty('--note-delay', \`\${index * 55}ms\`);
+      note.style.setProperty('--note-angle', `${noteAngle}deg`);
+      note.style.setProperty('--note-angle-neg', `${-noteAngle}deg`);
+      note.style.setProperty('--note-delay', `${index * 55}ms`);
       record.appendChild(note);
       setTimeout(() => note.remove(), 1600);
     });
@@ -121,10 +121,10 @@
 
     const thread = document.createElement('span');
     thread.className = 'yim-constellation-thread';
-    thread.style.left = \`\${x1}px\`;
-    thread.style.top = \`\${y1}px\`;
-    thread.style.width = \`\${distance}px\`;
-    thread.style.setProperty('--thread-angle', \`\${angle}deg\`);
+    thread.style.left = `${x1}px`;
+    thread.style.top = `${y1}px`;
+    thread.style.width = `${distance}px`;
+    thread.style.setProperty('--thread-angle', `${angle}deg`);
     orbit.appendChild(thread);
     requestAnimationFrame(() => thread.classList.add('is-drawn'));
 
@@ -144,7 +144,7 @@
   document.querySelectorAll('.quote-dot').forEach(dot => {
     dot.setAttribute('role', 'button');
     dot.setAttribute('tabindex', '0');
-    dot.setAttribute('aria-label', \`Connect \${dot.textContent.trim()} to the constellation\`);
+    dot.setAttribute('aria-label', `Connect ${dot.textContent.trim()} to the constellation`);
   });
 
   document.addEventListener('click', event => {
