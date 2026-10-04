@@ -32,44 +32,27 @@ export default {
 
 async function createCheckout(request, env, url) {
   if (!env.STRIPE_SECRET_KEY) return json({ error: 'Stripe is not configured yet.' }, 500);
-  if (!env.DB) return json({ error: 'The orders database is not configured yet.' }, 500);
-
   const body = await request.json();
   const tierKey = String(body.tier || '').toLowerCase();
   const tier = TIERS[tierKey];
   const name = String(body.name || '').trim();
   const email = String(body.email || '').trim();
-
   if (!tier) return json({ error: 'Choose a valid song experience.' }, 400);
   if (!name || !email || !email.includes('@')) return json({ error: 'Name and a valid email are required.' }, 400);
 
   const orderId = id();
   const stamp = now();
-
   await env.DB.prepare(`INSERT INTO orders (
     id,status,customer_name,email,recipient,tier,amount_cents,sound_style,feeling,story_center,phrase,place,tiny_detail,ending_feeling,created_at,updated_at
   ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).bind(
-    orderId,
-    'draft',
-    name,
-    email,
-    clean(body.recipient),
-    tierKey,
-    tier.amount,
-    clean(body.sound_style),
-    clean(body.feeling),
-    clean(body.story_center),
-    clean(body.phrase),
-    clean(body.place),
-    clean(body.tiny_detail),
-    clean(body.ending_feeling),
-    stamp,
-    stamp
+    orderId, 'draft', name, email, clean(body.recipient), tierKey, tier.amount,
+    clean(body.sound_style), clean(body.feeling), clean(body.story_center), clean(body.phrase), clean(body.place),
+    clean(body.tiny_detail), clean(body.ending_feeling), stamp, stamp
   ).run();
 
   const form = new URLSearchParams();
   form.set('mode', 'payment');
-  form.set('success_url', `${url.origin}/you-in-music-story-room.html?session_id={CHECKOUT_SESSION_ID}`);
+  form.set('success_url', `${url.origin}/you-in-music-intake.html?session_id={CHECKOUT_SESSION_ID}`);
   form.set('cancel_url', `${url.origin}/you-in-music-checkout.html?tier=${encodeURIComponent(tierKey)}&canceled=1`);
   form.set('customer_email', email);
   form.set('line_items[0][quantity]', '1');
@@ -87,20 +70,13 @@ async function createCheckout(request, env, url) {
     },
     body: form.toString(),
   });
-
   const session = await stripe.json();
-
   if (!stripe.ok) {
-    await env.DB.prepare('UPDATE orders SET status=?, updated_at=? WHERE id=?')
-      .bind('checkout_error', now(), orderId)
-      .run();
+    await env.DB.prepare('UPDATE orders SET status=?, updated_at=? WHERE id=?').bind('checkout_error', now(), orderId).run();
     return json({ error: session?.error?.message || 'Stripe could not start checkout.' }, 502);
   }
-
   await env.DB.prepare('UPDATE orders SET stripe_session_id=?, status=?, updated_at=? WHERE id=?')
-    .bind(session.id, 'checkout_created', now(), orderId)
-    .run();
-
+    .bind(session.id, 'checkout_created', now(), orderId).run();
   return json({ url: session.url });
 }
 
@@ -110,7 +86,6 @@ async function stripeWebhook(request, env) {
   const signature = request.headers.get('stripe-signature') || '';
   const valid = await verifyStripeSignature(raw, signature, env.STRIPE_WEBHOOK_SECRET);
   if (!valid) return new Response('Invalid signature', { status: 400 });
-
   const event = JSON.parse(raw);
   const session = event.data?.object;
   if (!session?.id) return new Response('ok');
@@ -119,174 +94,79 @@ async function stripeWebhook(request, env) {
     if (session.payment_status === 'paid') await markPaid(env, session);
     else await setSessionStatus(env, session.id, 'payment_processing');
   }
-
   if (event.type === 'checkout.session.async_payment_succeeded') await markPaid(env, session);
   if (event.type === 'checkout.session.async_payment_failed') await setSessionStatus(env, session.id, 'payment_failed');
-
   return new Response('ok');
 }
 
 async function markPaid(env, session) {
   const orderId = session.metadata?.order_id;
   const stamp = now();
-
   if (orderId) {
     await env.DB.prepare(`UPDATE orders SET stripe_payment_intent_id=?, status='paid', paid_at=COALESCE(paid_at,?), updated_at=? WHERE id=?`)
-      .bind(session.payment_intent || null, stamp, stamp, orderId)
-      .run();
+      .bind(session.payment_intent || null, stamp, stamp, orderId).run();
   } else {
     await env.DB.prepare(`UPDATE orders SET stripe_payment_intent_id=?, status='paid', paid_at=COALESCE(paid_at,?), updated_at=? WHERE stripe_session_id=?`)
-      .bind(session.payment_intent || null, stamp, stamp, session.id)
-      .run();
+      .bind(session.payment_intent || null, stamp, stamp, session.id).run();
   }
 }
 
 async function setSessionStatus(env, sessionId, status) {
-  await env.DB.prepare('UPDATE orders SET status=?, updated_at=? WHERE stripe_session_id=?')
-    .bind(status, now(), sessionId)
-    .run();
+  await env.DB.prepare('UPDATE orders SET status=?, updated_at=? WHERE stripe_session_id=?').bind(status, now(), sessionId).run();
 }
 
 async function getOrder(request, env, url) {
-  if (!env.DB) return json({ error: 'The orders database is not configured yet.' }, 500);
-
   const sessionId = url.searchParams.get('session_id');
   if (!sessionId) return json({ error: 'Missing session.' }, 400);
-
-  let order = await env.DB.prepare('SELECT * FROM orders WHERE stripe_session_id=?')
-    .bind(sessionId)
-    .first();
-
+  let order = await env.DB.prepare('SELECT * FROM orders WHERE stripe_session_id=?').bind(sessionId).first();
   if (!order) return json({ error: 'Order not found.' }, 404);
 
-  if (!['paid', 'ready_to_create', 'in_progress', 'preview_sent', 'complete'].includes(order.status) && env.STRIPE_SECRET_KEY) {
+  if (!['paid','ready_to_create','in_progress','preview_sent','complete'].includes(order.status) && env.STRIPE_SECRET_KEY) {
     const stripe = await fetch(`https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}`, {
       headers: { authorization: `Bearer ${env.STRIPE_SECRET_KEY}` },
     });
-
     if (stripe.ok) {
       const session = await stripe.json();
       if (session.payment_status === 'paid') {
         await markPaid(env, session);
-        order = await env.DB.prepare('SELECT * FROM orders WHERE stripe_session_id=?')
-          .bind(sessionId)
-          .first();
+        order = await env.DB.prepare('SELECT * FROM orders WHERE stripe_session_id=?').bind(sessionId).first();
       }
     }
   }
-
   return json({ order: publicOrder(order) });
 }
 
 async function saveIntake(request, env) {
-  if (!env.DB) return json({ error: 'The orders database is not configured yet.' }, 500);
-
   const body = await request.json();
   const sessionId = String(body.session_id || '');
-  const order = await env.DB.prepare('SELECT * FROM orders WHERE stripe_session_id=?')
-    .bind(sessionId)
-    .first();
-
+  const order = await env.DB.prepare('SELECT * FROM orders WHERE stripe_session_id=?').bind(sessionId).first();
   if (!order) return json({ error: 'Order not found.' }, 404);
-  if (!['paid', 'ready_to_create'].includes(order.status)) {
-    return json({ error: 'Payment must be confirmed before the Story Room can be submitted.' }, 403);
-  }
+  if (!['paid','ready_to_create'].includes(order.status)) return json({ error: 'Payment must be confirmed before the story room opens.' }, 403);
 
-  const story = body.story && typeof body.story === 'object' && !Array.isArray(body.story)
-    ? body.story
-    : {};
-
-  const legacy = legacyFields(story, body, order);
   const stamp = now();
-
   await env.DB.prepare(`UPDATE orders SET
     song_for_name=?, relationship=?, pronunciation=?, occasion_date=?, core_story=?, memories=?, must_include=?, must_avoid=?,
-    genre_notes=?, vocalist_pref=?, energy_notes=?, language_notes=?, private_notes=?, story_json=?, status='ready_to_create',
-    intake_submitted_at=COALESCE(intake_submitted_at,?), updated_at=? WHERE stripe_session_id=?`).bind(
-      clean(legacy.song_for_name),
-      clean(legacy.relationship),
-      clean(legacy.pronunciation),
-      clean(legacy.occasion_date),
-      clean(legacy.core_story),
-      clean(legacy.memories),
-      clean(legacy.must_include),
-      clean(legacy.must_avoid),
-      clean(legacy.genre_notes),
-      clean(legacy.vocalist_pref),
-      clean(legacy.energy_notes),
-      clean(legacy.language_notes),
-      clean(legacy.private_notes),
-      cleanJson(story),
-      stamp,
-      stamp,
-      sessionId
+    genre_notes=?, vocalist_pref=?, energy_notes=?, language_notes=?, private_notes=?, status='ready_to_create',
+    intake_submitted_at=?, updated_at=? WHERE stripe_session_id=?`).bind(
+      clean(body.song_for_name), clean(body.relationship), clean(body.pronunciation), clean(body.occasion_date), clean(body.core_story),
+      clean(body.memories), clean(body.must_include), clean(body.must_avoid), clean(body.genre_notes), clean(body.vocalist_pref),
+      clean(body.energy_notes), clean(body.language_notes), clean(body.private_notes), stamp, stamp, sessionId
     ).run();
-
-  return json({ ok: true, status: 'ready_to_create' });
-}
-
-function legacyFields(story, body, order) {
-  return {
-    song_for_name: body.song_for_name || story.subject_name || order.recipient,
-    relationship: body.relationship || story.relationship,
-    pronunciation: body.pronunciation || story.pronunciation,
-    occasion_date: body.occasion_date || story.occasion_date,
-    core_story: body.core_story || join([
-      labeled('Scene', story.core_scene),
-      labeled('What I wish they understood', story.unsaid_truth),
-      labeled('Truth at the end', story.final_truth),
-    ]),
-    memories: body.memories || join([
-      labeled('Where', story.scene_place),
-      labeled('When', story.scene_time),
-      labeled('Image', story.scene_image),
-      labeled('Sounds', story.sounds),
-      labeled('Sensory details', story.sensory_details),
-      labeled('Ritual', story.ritual),
-      labeled('Before', story.before),
-      labeled('After', story.after),
-      labeled('Turning point', story.turning_point),
-      labeled('Second scene', story.second_scene),
-      labeled('Third scene', story.third_scene),
-      labeled('Recurring motif', story.motif),
-      labeled('Supporting people', story.supporting_people),
-    ]),
-    must_include: body.must_include || story.must_keep,
-    must_avoid: body.must_avoid || story.no_go,
-    genre_notes: body.genre_notes || order.sound_style,
-    vocalist_pref: body.vocalist_pref || story.vocal_preference,
-    energy_notes: body.energy_notes || order.feeling,
-    language_notes: body.language_notes || join([
-      labeled('Directness', story.directness),
-      labeled('Profanity', story.profanity),
-    ]),
-    private_notes: body.private_notes || join([
-      labeled('First thing you would notice', story.first_notice),
-      labeled('Perspective', story.perspective),
-      labeled('Complication', story.contradiction),
-      labeled('Anything else', story.anything_else),
-    ]),
-  };
+  return json({ ok: true });
 }
 
 async function adminOrders(request, env) {
   if (!adminOk(request, env)) return json({ error: 'Unauthorized.' }, 401);
-  const { results } = await env.DB.prepare(`SELECT * FROM orders
-    WHERE status IN ('paid','ready_to_create','in_progress','preview_sent','complete')
-    ORDER BY created_at DESC LIMIT 100`).all();
+  const { results } = await env.DB.prepare(`SELECT * FROM orders WHERE status IN ('paid','ready_to_create','in_progress','preview_sent','complete') ORDER BY created_at DESC LIMIT 100`).all();
   return json({ orders: results });
 }
 
 async function adminStatus(request, env) {
   if (!adminOk(request, env)) return json({ error: 'Unauthorized.' }, 401);
   const body = await request.json();
-  const allowed = new Set(['paid', 'ready_to_create', 'in_progress', 'preview_sent', 'complete']);
+  const allowed = new Set(['paid','ready_to_create','in_progress','preview_sent','complete']);
   if (!allowed.has(body.status)) return json({ error: 'Invalid status.' }, 400);
-
-  await env.DB.prepare('UPDATE orders SET status=?, updated_at=? WHERE id=?')
-    .bind(body.status, now(), String(body.id || ''))
-    .run();
-
+  await env.DB.prepare('UPDATE orders SET status=?, updated_at=? WHERE id=?').bind(body.status, now(), String(body.id || '')).run();
   return json({ ok: true });
 }
 
@@ -297,40 +177,11 @@ function adminOk(request, env) {
 
 function publicOrder(order) {
   return {
-    status: order.status,
-    customer_name: order.customer_name,
-    email: order.email,
-    recipient: order.recipient,
-    tier: order.tier,
-    amount_cents: order.amount_cents,
-    sound_style: order.sound_style,
-    feeling: order.feeling,
-    story_center: order.story_center,
-    phrase: order.phrase,
-    place: order.place,
-    tiny_detail: order.tiny_detail,
+    status: order.status, customer_name: order.customer_name, email: order.email, recipient: order.recipient,
+    tier: order.tier, amount_cents: order.amount_cents, sound_style: order.sound_style, feeling: order.feeling,
+    story_center: order.story_center, phrase: order.phrase, place: order.place, tiny_detail: order.tiny_detail,
     ending_feeling: order.ending_feeling,
-    story: parseStory(order.story_json),
   };
-}
-
-function parseStory(value) {
-  if (!value) return {};
-  try {
-    const parsed = JSON.parse(value);
-    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
-  } catch {
-    return {};
-  }
-}
-
-function join(values) {
-  return values.filter(Boolean).join('\n\n') || null;
-}
-
-function labeled(label, value) {
-  const cleaned = clean(value);
-  return cleaned ? `${label}: ${cleaned}` : null;
 }
 
 function clean(value) {
@@ -338,44 +189,23 @@ function clean(value) {
   return s ? s.slice(0, 12000) : null;
 }
 
-function cleanJson(value) {
-  try {
-    const serialized = JSON.stringify(value || {});
-    return serialized.slice(0, 120000);
-  } catch {
-    return '{}';
-  }
-}
-
 async function verifyStripeSignature(payload, header, secret) {
   const parts = header.split(',').map(x => x.trim());
   const timestamp = parts.find(x => x.startsWith('t='))?.slice(2);
   const signatures = parts.filter(x => x.startsWith('v1=')).map(x => x.slice(3));
-
   if (!timestamp || !signatures.length) return false;
-
   const age = Math.abs(Date.now() / 1000 - Number(timestamp));
   if (!Number.isFinite(age) || age > 300) return false;
-
   const data = new TextEncoder().encode(`${timestamp}.${payload}`);
-  const key = await crypto.subtle.importKey(
-    'raw',
-    new TextEncoder().encode(secret),
-    { name: 'HMAC', hash: 'SHA-256' },
-    false,
-    ['sign']
-  );
+  const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
   const mac = await crypto.subtle.sign('HMAC', key, data);
-  const expected = [...new Uint8Array(mac)]
-    .map(b => b.toString(16).padStart(2, '0'))
-    .join('');
-
+  const expected = [...new Uint8Array(mac)].map(b => b.toString(16).padStart(2, '0')).join('');
   return signatures.some(sig => safeEqual(sig, expected));
 }
 
 function safeEqual(a, b) {
   if (a.length !== b.length) return false;
   let out = 0;
-  for (let i = 0; i < a.length; i += 1) out |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  for (let i = 0; i < a.length; i++) out |= a.charCodeAt(i) ^ b.charCodeAt(i);
   return out === 0;
 }

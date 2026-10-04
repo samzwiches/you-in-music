@@ -28,7 +28,6 @@ CREATE TABLE IF NOT EXISTS orders (
   energy_notes TEXT,
   language_notes TEXT,
   private_notes TEXT,
-  story_json TEXT,
   created_at TEXT NOT NULL,
   paid_at TEXT,
   intake_submitted_at TEXT,

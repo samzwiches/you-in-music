@@ -1,0 +1,13 @@
+{
+  "name": "you-in-music-business-layer",
+  "private": true,
+  "devDependencies": {
+    "wrangler": "4.131.0"
+  },
+  "scripts": {
+    "dev:business": "wrangler dev -c wrangler.business-test.jsonc",
+    "deploy:business:test": "wrangler deploy -c wrangler.business-test.jsonc",
+    "db:local": "wrangler d1 execute you-in-music-orders-test --local --file=./schema.sql -c wrangler.business-test.jsonc",
+    "db:remote:test": "wrangler d1 execute you-in-music-orders-test --remote --file=./schema.sql -c wrangler.business-test.jsonc"
+  }
+}
