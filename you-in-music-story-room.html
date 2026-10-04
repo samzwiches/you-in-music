@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08070d" />
+  <title>Your Story Room | You In Music</title>
+  <link rel="stylesheet" href="./you-in-music.css" />
+</head>
+<body class="v3-page v3-story-room">
+  <header class="v2-nav">
+    <a class="v2-brand" href="./index.html" aria-label="You In Music home">
+      <span class="v2-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <span><strong>You In Music</strong><small>made from a life, not a template</small></span>
+    </a>
+    <nav class="v2-links" aria-label="Main navigation">
+      <a href="./index.html#listen">Listen</a>
+      <a href="./you-in-music-process.html">How it works</a>
+      <a href="./you-in-music-options.html">Options</a>
+      <a class="v2-pill" href="./you-in-music-story-room.html" aria-current="page">Story room</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="story-room-hero">
+      <div class="v2-ambient" aria-hidden="true">
+        <span class="orb orb-a"></span><span class="orb orb-b"></span><span class="orb orb-c"></span>
+        <span class="ring ring-a"></span><span class="ring ring-b"></span>
+      </div>
+      <div class="story-room-hero-copy">
+        <p class="v2-overline">THE STORY ROOM</p>
+        <h1>Tell me the part only <em>you</em> would know.</h1>
+        <p>You already gave us the thread. This is where we follow it into the rooms, phrases, contradictions, and tiny human things that make the song belong to one life instead of anybody's.</p>
+      </div>
+      <aside class="story-room-pass" aria-label="Story room status">
+        <small>YOUR STORY PASS</small>
+        <strong data-tier-name>Deep Dive</strong>
+        <p data-save-status>Saved on this device</p>
+        <div class="story-progress" aria-label="Story progress">
+          <i data-progress-bar></i>
+        </div>
+        <span><b data-progress-number>0%</b> gathered so far</span>
+      </aside>
+    </section>
+
+    <section class="story-room-thread" data-thread-summary>
+      <div>
+        <p class="v2-overline">WE REMEMBERED</p>
+        <h2>No starting over.</h2>
+        <p>The choices you already made are waiting here with you.</p>
+      </div>
+      <div class="story-thread-grid">
+        <p><span>FEELING</span><strong data-thread-feeling>Still deciding</strong></p>
+        <p><span>CENTER</span><strong data-thread-center>Still deciding</strong></p>
+        <p><span>SOUND</span><strong data-thread-sound>Still listening</strong></p>
+      </div>
+    </section>
+
+    <section class="story-room-shell">
+      <aside class="story-room-nav" aria-label="Story room sections">
+        <small>YOUR THREAD</small>
+        <a href="#anchor" class="active">01 · The center</a>
+        <a href="#scene">02 · The scene</a>
+        <a href="#truth">03 · The truth</a>
+        <a href="#texture" data-tier-link="deep signature">04 · The fingerprints</a>
+        <a href="#arc" data-tier-link="deep signature">05 · The arc</a>
+        <a href="#archive" data-tier-link="signature">06 · The archive</a>
+        <a href="#boundaries">Last · Boundaries</a>
+      </aside>
+
+      <div class="story-room-form">
+        <section class="story-chapter" id="anchor">
+          <div class="story-chapter-head">
+            <span>01</span>
+            <div>
+              <p class="v2-overline">THE CENTER OF GRAVITY</p>
+              <h2>Who lives at the center of this song?</h2>
+              <p>Names help. So do nicknames, odd pronunciations, and the way you actually think of them.</p>
+            </div>
+          </div>
+          <div class="story-field-grid">
+            <label class="story-field">
+              <span>Who is this song really about?</span>
+              <input data-story="subject_name" data-progress-field type="text" placeholder="Name, nickname, or just “me”" />
+            </label>
+            <label class="story-field">
+              <span>How do you know each other?</span>
+              <input data-story="relationship" data-progress-field type="text" placeholder="Mother, best friend, first love, the version of me before..." />
+            </label>
+            <label class="story-field full">
+              <span>If I met them for five minutes, what would I notice first?</span>
+              <textarea data-story="first_notice" data-progress-field placeholder="The laugh. The way they fill silence. The fact that they never sit still..."></textarea>
+            </label>
+            <label class="story-field">
+              <span>Any name or word we need to pronounce exactly right?</span>
+              <input data-story="pronunciation" type="text" placeholder="Optional pronunciation note" />
+            </label>
+            <label class="story-field">
+              <span>Whose voice should the song feel closest to?</span>
+              <select data-story="perspective">
+                <option value="">Choose if it matters</option>
+                <option>Me speaking to them</option>
+                <option>Me remembering them</option>
+                <option>Us looking back together</option>
+                <option>Me speaking to an earlier version of myself</option>
+                <option>Let the song decide</option>
+              </select>
+            </label>
+          </div>
+        </section>
+
+        <section class="story-chapter" id="scene">
+          <div class="story-chapter-head">
+            <span>02</span>
+            <div>
+              <p class="v2-overline">PUT US SOMEWHERE REAL</p>
+              <h2>Give me one scene I could almost walk into.</h2>
+              <p>Do not summarize the whole relationship. Pick one moment and let it breathe.</p>
+            </div>
+          </div>
+          <div class="story-field-grid">
+            <label class="story-field full">
+              <span>What happened?</span>
+              <textarea data-story="core_scene" data-progress-field class="story-tall" placeholder="Tell it badly. Tell it out of order. Tell it like you are texting somebody who already knows half of it."></textarea>
+            </label>
+            <label class="story-field">
+              <span>Where were you?</span>
+              <input data-story="scene_place" data-progress-field type="text" placeholder="Kitchen floor, Route 17, hospital parking lot..." />
+            </label>
+            <label class="story-field">
+              <span>Roughly when was this?</span>
+              <input data-story="scene_time" type="text" placeholder="Summer after senior year, 2:17 AM, last Christmas..." />
+            </label>
+            <label class="story-field full">
+              <span>What is the one image from that moment that still flashes back?</span>
+              <textarea data-story="scene_image" data-progress-field placeholder="A porch light, wet hair, one hand on the steering wheel, shoes by the door..."></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="story-chapter" id="truth">
+          <div class="story-chapter-head">
+            <span>03</span>
+            <div>
+              <p class="v2-overline">WHAT IT IS REALLY ABOUT</p>
+              <h2>Under the memory, what is the truth?</h2>
+              <p>This is usually the part people feel before they know how to say it.</p>
+            </div>
+          </div>
+          <div class="story-field-grid">
+            <label class="story-field full">
+              <span>What do you wish they understood without you having to explain it?</span>
+              <textarea data-story="unsaid_truth" data-progress-field placeholder="The thing underneath all the other things..."></textarea>
+            </label>
+            <label class="story-field full">
+              <span>What makes this story complicated?</span>
+              <textarea data-story="contradiction" data-progress-field placeholder="I was furious and still wanted them to stay. It was beautiful and terrible. I miss who I was there..."></textarea>
+            </label>
+            <label class="story-field full">
+              <span>When the song ends, what truth should be left standing?</span>
+              <textarea data-story="final_truth" data-progress-field placeholder="Not a slogan. The sentence you want the song to earn."></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="story-chapter" id="texture" data-tier-section="deep signature">
+          <div class="story-chapter-head">
+            <span>04</span>
+            <div>
+              <p class="v2-overline">THE FINGERPRINTS</p>
+              <h2>Now give it the things nobody else would invent.</h2>
+              <p>You already gave us a few details earlier. Keep those. Add the sensory stuff and strange little rituals around them.</p>
+            </div>
+          </div>
+          <div class="story-carried-details">
+            <p><span>Phrase you gave us</span><strong data-carried-phrase>Nothing yet</strong></p>
+            <p><span>Place you gave us</span><strong data-carried-place>Nothing yet</strong></p>
+            <p><span>Tiny detail you gave us</span><strong data-carried-detail>Nothing yet</strong></p>
+          </div>
+          <div class="story-field-grid">
+            <label class="story-field full">
+              <span>What sounds belong to this story?</span>
+              <textarea data-story="sounds" data-progress-field placeholder="A screen door, turn signal, voicemail beep, sneakers on gym floor, somebody singing the wrong lyric..."></textarea>
+            </label>
+            <label class="story-field full">
+              <span>What physical details make the memory snap into focus?</span>
+              <textarea data-story="sensory_details" data-progress-field placeholder="Weather, smells, clothes, food, light, objects, textures..."></textarea>
+            </label>
+            <label class="story-field full">
+              <span>What is a ritual or habit that belongs only to this relationship?</span>
+              <textarea data-story="ritual" placeholder="The Friday phone call. The same gas station. Three taps on the dashboard..."></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="story-chapter" id="arc" data-tier-section="deep signature">
+          <div class="story-chapter-head">
+            <span>05</span>
+            <div>
+              <p class="v2-overline">THE SHAPE OF THE STORY</p>
+              <h2>What changed between then and now?</h2>
+              <p>A song does not need a tidy ending. It does need movement.</p>
+            </div>
+          </div>
+          <div class="story-field-grid">
+            <label class="story-field">
+              <span>Before this story changed you...</span>
+              <textarea data-story="before" data-progress-field placeholder="Who were you, or who were the two of you?"></textarea>
+            </label>
+            <label class="story-field">
+              <span>Afterward...</span>
+              <textarea data-story="after" data-progress-field placeholder="What became different, even quietly?"></textarea>
+            </label>
+            <label class="story-field full">
+              <span>Was there a turning point?</span>
+              <textarea data-story="turning_point" placeholder="The phone call, the leaving, the laugh, the diagnosis, the apology, the ordinary Tuesday..."></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="story-chapter" id="archive" data-tier-section="signature">
+          <div class="story-chapter-head">
+            <span>06</span>
+            <div>
+              <p class="v2-overline">THE FULL LITTLE UNIVERSE</p>
+              <h2>What else belongs in the archive?</h2>
+              <p>Signature gets room for echoes, secondary scenes, recurring objects, and people whose names carry history.</p>
+            </div>
+          </div>
+          <div class="story-field-grid">
+            <label class="story-field full">
+              <span>Another memory we should keep nearby</span>
+              <textarea data-story="second_scene" data-progress-field placeholder="A second scene that rhymes with the first somehow..."></textarea>
+            </label>
+            <label class="story-field full">
+              <span>And one more, if it belongs</span>
+              <textarea data-story="third_scene" placeholder="Optional. Sometimes three scenes make a whole life appear."></textarea>
+            </label>
+            <label class="story-field">
+              <span>Any object, place, phrase, or image that keeps returning?</span>
+              <textarea data-story="motif" data-progress-field placeholder="A red coat. Exit 12. Fireflies. The same dumb joke..."></textarea>
+            </label>
+            <label class="story-field">
+              <span>Who else belongs at the edges of this song?</span>
+              <textarea data-story="supporting_people" placeholder="Kids, siblings, friends, grandparents, the dog who was somehow always there..."></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="story-chapter story-boundaries" id="boundaries">
+          <div class="story-chapter-head">
+            <span>LAST</span>
+            <div>
+              <p class="v2-overline">THE DO NOT CROSS LINES</p>
+              <h2>Tell us what to protect.</h2>
+              <p>Personal does not mean everything has to be used. You get to draw the borders.</p>
+            </div>
+          </div>
+          <div class="story-field-grid">
+            <label class="story-field full">
+              <span>Anything we should absolutely not mention?</span>
+              <textarea data-story="no_go" placeholder="Names, events, subjects, jokes, details, anything that would feel wrong to hear sung back."></textarea>
+            </label>
+            <label class="story-field full">
+              <span>Anything that absolutely must survive into the song?</span>
+              <textarea data-story="must_keep" data-progress-field placeholder="The one line, image, memory, or truth you would be sad to lose."></textarea>
+            </label>
+            <label class="story-field">
+              <span>How direct can we be?</span>
+              <select data-story="directness">
+                <option value="">Let the story decide</option>
+                <option>Say it plainly</option>
+                <option>Let it live mostly in imagery</option>
+                <option>Somewhere in the middle</option>
+              </select>
+            </label>
+            <label class="story-field">
+              <span>Profanity?</span>
+              <select data-story="profanity">
+                <option value="">Use judgment</option>
+                <option>Keep it clean</option>
+                <option>Mild is fine</option>
+                <option>Use the language the story actually uses</option>
+              </select>
+            </label>
+            <label class="story-field full">
+              <span>Anything else you need the songwriter to know before touching this story?</span>
+              <textarea data-story="anything_else" placeholder="This box is for the thing that did not fit anywhere else."></textarea>
+            </label>
+          </div>
+        </section>
+
+        <section class="story-room-finish">
+          <div>
+            <p class="v2-overline">YOU DO NOT HAVE TO MAKE IT PERFECT</p>
+            <h2 data-finish-title>This is enough to start hearing the song.</h2>
+            <p data-finish-copy>Everything here saves automatically on this device. You can leave, come back, rewrite, ramble, and change your mind.</p>
+          </div>
+          <div class="story-finish-actions">
+            <button type="button" class="story-save-button" data-save-now>Save my story</button>
+            <a href="#anchor">Read it through again</a>
+          </div>
+        </section>
+      </div>
+
+      <aside class="story-room-recap" aria-live="polite">
+        <small>WHAT WE ARE HOLDING ONTO</small>
+        <div data-live-recap>
+          <p>Your answers will gather here as you tell the story.</p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="v2-footer">
+    <div class="v2-brand">
+      <span class="v2-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <span><strong>You In Music</strong><small>some memories have a soundtrack</small></span>
+    </div>
+    <div class="v2-footer-links">
+      <a href="./you-in-music-options.html">Options</a>
+      <a href="./you-in-music-process.html">Process</a>
+      <a href="./index.html#listen">Listen</a>
+    </div>
+    <small>Private by default. Human details encouraged.</small>
+  </footer>
+
+  <script src="./you-in-music-state.js"></script>
+  <script src="./you-in-music-story-room.js"></script>
+</body>
+</html>
