@@ -5,6 +5,10 @@
     "wrangler": "4.131.0"
   },
   "scripts": {
-    "deploy": "wrangler deploy"
+    "dev": "wrangler dev -c wrangler.local.jsonc",
+    "dev:static": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:setup:local": "wrangler d1 execute you-in-music-orders-local --local --file=./schema.sql -c wrangler.local.jsonc",
+    "db:migrate:story-room:local": "wrangler d1 execute you-in-music-orders-local --local --file=./migrations/0002_story_room.sql -c wrangler.local.jsonc"
   }
 }

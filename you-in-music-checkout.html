@@ -1,28 +1,175 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="theme-color" content="#08070d"/><title>Checkout | You In Music</title><link rel="stylesheet" href="./you-in-music.css"/></head><body class="v3-page v3-checkout"><header class="v2-nav"><a class="v2-brand" href="./index.html"><span class="v2-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span><strong>You In Music</strong><small>made from a life, not a template</small></span></a><nav class="v2-links" aria-label="Main navigation"><a href="./index.html#listen">Listen</a><a href="./you-in-music-community.html">Community</a><a href="./you-in-music-process.html">How it works</a><a href="./you-in-music-gift.html">Gift one</a><a class="v2-pill" href="./you-in-music-journey.html">Make my song</a></nav></header><main><section class="v3-hero"><div class="v2-ambient" aria-hidden="true"><span class="orb orb-a"></span><span class="orb orb-b"></span><span class="orb orb-c"></span><span class="ring ring-a"></span><span class="ring ring-b"></span></div><div class="v3-hero-copy"><p class="v2-overline">YOU ARE ALMOST THERE</p><h1>Keep the song simple.<br><em>Keep the story yours.</em></h1><p class="v3-lede">Confirm the experience, tell us where to send it, and then the deeper story room opens.</p></div><div class="v3-hero-object"><div class="v3-ticket"><small>YOU IN MUSIC</small><strong>YOUR STORY<br>HAS A SEAT</strong><span>PRIVATE DELIVERY · DIGITAL</span></div></div><div class="v2-scroll-note">keep going <span>↓</span></div></section>
-<section class="v2-section"><div class="v3-checkout-grid"><article class="v3-order"><p class="v2-overline">YOUR SONG</p><div class="v3-order-tier"><span id="tierName">Deep Dive</span><strong id="tierPrice">$89</strong></div><p id="tierDesc">More story, more fingerprints, more room for the details that make it yours.</p><div class="v3-checkout-story" data-story-snapshot hidden><small>THE THREAD YOU BROUGHT WITH YOU</small><p><span>Feeling</span><strong data-checkout-feeling></strong></p><p><span>Center of gravity</span><strong data-checkout-center></strong></p><p><span>Sound direction</span><strong data-checkout-sound></strong></p></div><ul><li>Personal song built from your story</li><li>Private digital delivery</li><li>Guided story room after checkout</li><li>You control whether anything is ever shared</li></ul><a href="./you-in-music-options.html">Change song experience</a></article><form class="v3-checkout-form"><p class="v2-overline">WHERE SHOULD THE SONG GO?</p><label><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam"/></label><label><span>Email for delivery</span><input type="email" name="email" autocomplete="email" placeholder="you@example.com"/></label><label><span>This song is for</span><input type="text" name="recipient" placeholder="me, my partner, my dad..."/></label><div class="v3-payment-placeholder"><small>PAYMENT</small><strong>Secure checkout is the next connection.</strong><p>This preview does not collect payment yet. Your story choices stay on this device while the payment handoff is being finished.</p></div><button type="button" disabled aria-disabled="true">Payment connection coming next →</button><small class="v3-fineprint">Your story stays private unless you explicitly choose to share part of it. Nothing entered on this preview form is submitted.</small></form></div></section>
-<section class="v3-assurance"><div><span>01</span><strong>No generic template lyrics</strong></div><div><span>02</span><strong>Private by default</strong></div><div><span>03</span><strong>Your details stay the center</strong></div></section></main><footer class="v2-footer"><div class="v2-brand"><span class="v2-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span><strong>You In Music</strong><small>some memories have a soundtrack</small></span></div><div class="v2-footer-links"><a href="./you-in-music-options.html">Options</a><a href="./you-in-music-gift.html">Gift</a><a href="./you-in-music-community.html">Community</a><a href="./you-in-music-process.html">Process</a></div><small>Made for humans with complicated feelings.</small></footer><script src="./you-in-music-state.js"></script><script>
-(() => {
-  const saved = window.YIM?.summary?.() || {};
-  const queryTier = new URLSearchParams(location.search).get("tier");
-  const selectedTier = queryTier || saved.selected_tier || "deep";
-  const tiers = {
-    quick: ["Quick Spark", "$49", "One bright, specific moment, held still."],
-    deep: ["Deep Dive", "$89", "More story, more fingerprints, more room for the details that make it yours."],
-    signature: ["Signature Piece", "$149", "The full little universe, with the most room for story and detail."]
-  };
-  const tierKey = tiers[selectedTier] ? selectedTier : "deep";
-  const tier = tiers[tierKey];
-  document.getElementById("tierName").textContent = tier[0];
-  document.getElementById("tierPrice").textContent = tier[1];
-  document.getElementById("tierDesc").textContent = tier[2];
-  window.YIM?.write?.({ selected_tier: tierKey });
-  const story = document.querySelector("[data-story-snapshot]");
-  const hasStory = saved.feeling || saved.story_center || saved.sound_title;
-  if (story && hasStory) {
-    story.hidden = false;
-    story.querySelector("[data-checkout-feeling]").textContent = saved.feeling || "Still deciding";
-    story.querySelector("[data-checkout-center]").textContent = saved.story_center || "Still deciding";
-    story.querySelector("[data-checkout-sound]").textContent = saved.sound_title || "Still listening";
-  }
-})();
-</script><script src="./you-in-music-magic.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08070d" />
+  <title>Checkout | You In Music</title>
+  <link rel="stylesheet" href="./you-in-music.css" />
+</head>
+<body class="v3-page v3-checkout">
+  <header class="v2-nav">
+    <a class="v2-brand" href="./index.html" aria-label="You In Music home">
+      <span class="v2-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <span><strong>You In Music</strong><small>made from a life, not a template</small></span>
+    </a>
+    <nav class="v2-links" aria-label="Main navigation">
+      <a href="./index.html#listen">Listen</a>
+      <a href="./you-in-music-process.html">How it works</a>
+      <a href="./you-in-music-gift.html">Gift one</a>
+      <a class="v2-pill" href="./you-in-music-journey.html">Make my song</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="v3-hero">
+      <div class="v2-ambient" aria-hidden="true">
+        <span class="orb orb-a"></span><span class="orb orb-b"></span><span class="orb orb-c"></span>
+        <span class="ring ring-a"></span><span class="ring ring-b"></span>
+      </div>
+      <div class="v3-hero-copy">
+        <p class="v2-overline">ONE LAST PRACTICAL BIT</p>
+        <h1>Choose the song.<br><em>Then open the Story Room.</em></h1>
+        <p class="v3-lede">Confirm the experience and delivery details. Secure payment happens with Stripe, then your private Story Room opens.</p>
+      </div>
+      <div class="v3-hero-object">
+        <div class="v3-ticket"><small>YOU IN MUSIC</small><strong>YOUR STORY<br>HAS A SEAT</strong><span>PRIVATE DELIVERY · DIGITAL</span></div>
+      </div>
+      <div class="v2-scroll-note">keep going <span>↓</span></div>
+    </section>
+
+    <section class="v2-section">
+      <div class="v3-checkout-grid">
+        <article class="v3-order">
+          <p class="v2-overline">YOUR SONG</p>
+          <div class="v3-order-tier"><span id="tierName">Deep Dive</span><strong id="tierPrice">$89</strong></div>
+          <p id="tierDesc">More story, more fingerprints, more room for the details that make it yours.</p>
+          <div class="v3-checkout-story" data-story-snapshot hidden>
+            <small>THE THREAD YOU BROUGHT WITH YOU</small>
+            <p><span>Feeling</span><strong data-checkout-feeling></strong></p>
+            <p><span>Center of gravity</span><strong data-checkout-center></strong></p>
+            <p><span>Sound direction</span><strong data-checkout-sound></strong></p>
+          </div>
+          <ul>
+            <li>Personal song built from your story</li>
+            <li>Private Story Room after payment</li>
+            <li>Private digital delivery</li>
+            <li>You control whether anything is ever shared</li>
+          </ul>
+          <a href="./you-in-music-options.html">Change song experience</a>
+        </article>
+
+        <form class="v3-checkout-form" id="checkoutForm">
+          <p class="v2-overline">WHERE SHOULD THE SONG GO?</p>
+          <label><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Sam" required /></label>
+          <label><span>Email for delivery</span><input type="email" name="email" autocomplete="email" placeholder="you@example.com" required /></label>
+          <label><span>This song is for</span><input type="text" name="recipient" placeholder="me, my partner, my dad..." /></label>
+
+          <div class="v3-payment-placeholder">
+            <small>SECURE PAYMENT</small>
+            <strong>Stripe handles the card details.</strong>
+            <p>You will leave this page briefly for secure checkout, then come straight into your private Story Room.</p>
+          </div>
+
+          <p class="checkout-status" id="checkoutStatus" role="status" aria-live="polite"></p>
+          <button type="submit" id="checkoutButton">Continue to secure checkout →</button>
+          <small class="v3-fineprint">Your early story choices are attached to this order. The full story is collected only after payment.</small>
+        </form>
+      </div>
+    </section>
+
+    <section class="v3-assurance">
+      <div><span>01</span><strong>No generic template lyrics</strong></div>
+      <div><span>02</span><strong>Private by default</strong></div>
+      <div><span>03</span><strong>Your details stay the center</strong></div>
+    </section>
+  </main>
+
+  <footer class="v2-footer">
+    <div class="v2-brand"><span class="v2-brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span><strong>You In Music</strong><small>some memories have a soundtrack</small></span></div>
+    <div class="v2-footer-links"><a href="./you-in-music-options.html">Options</a><a href="./you-in-music-gift.html">Gift</a><a href="./you-in-music-process.html">Process</a></div>
+    <small>Made for humans with complicated feelings.</small>
+  </footer>
+
+  <script src="./you-in-music-state.js"></script>
+  <script>
+    (() => {
+      const saved = window.YIM?.summary?.() || {};
+      const queryTier = new URLSearchParams(location.search).get('tier');
+      const selectedTier = queryTier || saved.selected_tier || 'deep';
+      const tiers = {
+        quick: ['Quick Spark', '$49', 'One bright, specific moment, held still.'],
+        deep: ['Deep Dive', '$89', 'More story, more fingerprints, more room for the details that make it yours.'],
+        signature: ['Signature Piece', '$149', 'The full little universe, with the most room for story and detail.']
+      };
+      const tierKey = tiers[selectedTier] ? selectedTier : 'deep';
+      const tier = tiers[tierKey];
+
+      document.getElementById('tierName').textContent = tier[0];
+      document.getElementById('tierPrice').textContent = tier[1];
+      document.getElementById('tierDesc').textContent = tier[2];
+      window.YIM?.write?.({ selected_tier: tierKey });
+
+      const story = document.querySelector('[data-story-snapshot]');
+      const hasStory = saved.feeling || saved.story_center || saved.sound_title;
+      if (story && hasStory) {
+        story.hidden = false;
+        story.querySelector('[data-checkout-feeling]').textContent = saved.feeling || 'Still deciding';
+        story.querySelector('[data-checkout-center]').textContent = saved.story_center || 'Still deciding';
+        story.querySelector('[data-checkout-sound]').textContent = saved.sound_title || 'Still listening';
+      }
+
+      const form = document.getElementById('checkoutForm');
+      const button = document.getElementById('checkoutButton');
+      const status = document.getElementById('checkoutStatus');
+      const canceled = new URLSearchParams(location.search).get('canceled');
+
+      if (canceled) {
+        status.textContent = 'Checkout was canceled. Nothing was charged, and your choices are still here.';
+      }
+
+      form.addEventListener('submit', async event => {
+        event.preventDefault();
+        status.className = 'checkout-status';
+        status.textContent = 'Opening secure checkout…';
+        button.disabled = true;
+
+        const fields = new FormData(form);
+        const payload = {
+          tier: tierKey,
+          name: fields.get('name'),
+          email: fields.get('email'),
+          recipient: fields.get('recipient'),
+          feeling: saved.feeling || '',
+          story_center: saved.story_center || '',
+          sound_style: saved.sound_style || '',
+          phrase: saved.phrase || '',
+          place: saved.place || '',
+          tiny_detail: saved.tiny_detail || '',
+          ending_feeling: saved.ending_feeling || ''
+        };
+
+        try {
+          const response = await fetch('/api/checkout', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const data = await response.json();
+
+          if (!response.ok || !data.url) {
+            throw new Error(data.error || 'Secure checkout could not open.');
+          }
+
+          location.href = data.url;
+        } catch (error) {
+          status.className = 'checkout-status error';
+          status.textContent = error.message || 'Secure checkout could not open.';
+          button.disabled = false;
+        }
+      });
+    })();
+  </script>
+  <script src="./you-in-music-magic.js"></script>
+</body>
+</html>
