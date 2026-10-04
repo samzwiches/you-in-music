@@ -9,9 +9,8 @@
   ];
 
   let selected = window.YIM?.getSound?.() || '';
-  if (!songs.some(song => song[0] === selected)) selected = '';
+  if (!songs.some(song => song[0] === selected)) selected = 'before';
 
-  const songById = id => songs.find(song => song[0] === id);
   const formatTime = value => {
     if (!Number.isFinite(value)) return '0:00';
     const minutes = Math.floor(value / 60);
@@ -21,49 +20,12 @@
 
   document.querySelectorAll('[data-listening-room]').forEach(room => {
     const inJourney = document.body.classList.contains('v3-journey') || location.pathname.includes('journey');
-    renderRoom(room, inJourney);
-  });
-
-  function renderRoom(room, inJourney, forceBrowse = false) {
-    const current = songById(selected);
-    const compact = inJourney && current && !forceBrowse;
-
-    if (compact) {
-      room.innerHTML = `
-        <div class="selected-sound-card" style="--style-color:${current[3]}">
-          <div>
-            <small>YOUR SOUND SO FAR</small>
-            <h3>${current[1]}</h3>
-            <p>You already chose this direction. Keep it, listen again, or reopen the shelf.</p>
-          </div>
-          <audio preload="metadata" src="./you-in-music-audio/${encodeURIComponent(current[2])}"></audio>
-          <div class="selected-sound-actions">
-            <button type="button" data-play-current>▶ Play this sample</button>
-            <button type="button" data-change-sound>Change the sound</button>
-            <a class="primary-button" href="./you-in-music-options.html">Keep it and choose my song →</a>
-          </div>
-        </div>`;
-
-      const audio = room.querySelector('audio');
-      const play = room.querySelector('[data-play-current]');
-      play.addEventListener('click', async () => {
-        if (audio.paused) {
-          try { await audio.play(); } catch {}
-        } else {
-          audio.pause();
-        }
-      });
-      audio.addEventListener('play', () => { play.textContent = 'Ⅱ Pause sample'; });
-      audio.addEventListener('pause', () => { play.textContent = '▶ Play this sample'; });
-      room.querySelector('[data-change-sound]').addEventListener('click', () => renderRoom(room, inJourney, true));
-      return;
-    }
 
     room.innerHTML = `
       <ol class="song-progress" aria-label="Song creation progress">
         <li class="${inJourney ? 'done' : 'active'}">Find your sound</li>
-        <li class="${inJourney ? 'active' : ''}">Choose your path</li>
-        <li>Tell the full story</li>
+        <li class="${inJourney ? 'done' : ''}">Share your story</li>
+        <li class="${inJourney ? 'active' : ''}">Make it yours</li>
       </ol>
       <div class="section-head">
         <div class="kicker">Made with You In Music</div>
@@ -103,24 +65,6 @@
         </a>
       </div>`;
 
-    wirePlayers(room);
-
-    room.addEventListener('click', event => {
-      const button = event.target.closest('[data-select]');
-      if (!button || !room.contains(button)) return;
-      selected = button.dataset.select;
-      const song = songById(selected);
-      window.YIM?.setSound?.(selected, song?.[1] || '');
-      renderSelectionState();
-      if (inJourney) {
-        setTimeout(() => renderRoom(room, inJourney), 180);
-      }
-    }, { once: false });
-
-    renderSelectionState();
-  }
-
-  function wirePlayers(room) {
     room.querySelectorAll('[data-song-card]').forEach(card => {
       const audio = card.querySelector('audio');
       const play = card.querySelector('.sample-play');
@@ -167,10 +111,22 @@
         card.querySelector('.sample-error').textContent = 'This song could not load. Please try again shortly.';
       });
     });
-  }
 
-  function renderSelectionState() {
-    const current = songById(selected);
+    room.addEventListener('click', event => {
+      const button = event.target.closest('[data-select]');
+      if (!button) return;
+      selected = button.dataset.select;
+      const song = songs.find(item => item[0] === selected);
+      window.YIM?.setSound?.(selected, song?.[1] || '');
+      if (!window.YIM?.setSound) {
+        try { localStorage.setItem('yim-style', selected); } catch {}
+      }
+      render();
+    });
+  });
+
+  function render() {
+    const current = songs.find(song => song[0] === selected);
 
     document.querySelectorAll('[data-select]').forEach(button => {
       const active = button.dataset.select === selected;
@@ -180,13 +136,13 @@
     });
 
     document.querySelectorAll('[data-listening-status]').forEach(status => {
-      status.textContent = current
-        ? `${current[1]} selected`
-        : 'Nothing selected yet. Play a few and notice what pulls you closer.';
+      status.textContent = current ? `${current[1]} selected` : 'Nothing selected yet. Play a few and notice what pulls you closer.';
     });
   }
 
   window.addEventListener('pagehide', () => {
-    document.querySelectorAll('audio').forEach(player => player.pause());
+    document.querySelectorAll('[data-song-card] audio').forEach(player => player.pause());
   });
+
+  render();
 })();
