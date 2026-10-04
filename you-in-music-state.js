@@ -59,6 +59,16 @@
     };
   }
 
+  function getStory() {
+    const state = read();
+    return state.story_room && typeof state.story_room === 'object' ? state.story_room : {};
+  }
+
+  function writeStory(patch) {
+    const nextStory = { ...getStory(), ...patch };
+    return write({ story_room: nextStory });
+  }
+
   function clear() {
     try {
       localStorage.removeItem(KEY);
@@ -67,5 +77,16 @@
     window.dispatchEvent(new CustomEvent('yim:state', { detail: {} }));
   }
 
-  window.YIM = { read, write, getSound, getSoundTitle, setSound, summary, clear, soundTitles };
+  window.YIM = {
+    read,
+    write,
+    getSound,
+    getSoundTitle,
+    setSound,
+    summary,
+    getStory,
+    writeStory,
+    clear,
+    soundTitles
+  };
 })();
