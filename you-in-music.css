@@ -3515,3 +3515,61 @@ textarea.story-field::placeholder {
     opacity:.35;
   }
 }
+
+
+/* Hard lock the privacy orbit geometry on small screens */
+@media (max-width: 620px) {
+  .home-v2 .v2-quote-orbit {
+    position:relative !important;
+    display:block !important;
+    width:min(300px,calc(100vw - 48px)) !important;
+    height:auto !important;
+    aspect-ratio:1 / 1 !important;
+    min-width:0 !important;
+    min-height:0 !important;
+    max-width:300px !important;
+    margin:0 auto !important;
+    padding:0 !important;
+    overflow:visible !important;
+    border-radius:50% !important;
+    box-sizing:border-box !important;
+  }
+
+  .home-v2 .v2-quote-orbit::before {
+    position:absolute !important;
+    inset:20% !important;
+    width:auto !important;
+    height:auto !important;
+    aspect-ratio:auto !important;
+    border-radius:50% !important;
+  }
+
+  .home-v2 .orbit-center,
+  .home-v2 .orbit-center.yim-center-pulse {
+    position:absolute !important;
+    inset:auto !important;
+    top:50% !important;
+    left:50% !important;
+    right:auto !important;
+    bottom:auto !important;
+    width:84px !important;
+    height:84px !important;
+    min-width:84px !important;
+    min-height:84px !important;
+    aspect-ratio:1 / 1 !important;
+    margin:0 !important;
+    padding:0 !important;
+    transform:translate(-50%,-50%) !important;
+    border-radius:50% !important;
+    display:grid !important;
+    place-content:center !important;
+    text-align:center !important;
+    box-sizing:border-box !important;
+    white-space:normal !important;
+  }
+
+  .home-v2 .orbit-center small {
+    display:block;
+    margin-top:3px;
+  }
+}
