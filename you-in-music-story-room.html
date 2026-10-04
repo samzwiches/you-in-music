@@ -96,6 +96,10 @@
               <input data-story="pronunciation" type="text" placeholder="Optional pronunciation note" />
             </label>
             <label class="story-field">
+              <span>Is there an important date attached to this?</span>
+              <input data-story="occasion_date" type="date" />
+            </label>
+            <label class="story-field">
               <span>Whose voice should the song feel closest to?</span>
               <select data-story="perspective">
                 <option value="">Choose if it matters</option>
@@ -169,13 +173,11 @@
             <div>
               <p class="v2-overline">THE FINGERPRINTS</p>
               <h2>Now give it the things nobody else would invent.</h2>
-              <p>You already gave us a few details earlier. Keep those. Add the sensory stuff and strange little rituals around them.</p>
+              <p>If you left one detail earlier, it is waiting here. Now add the sensory stuff and strange little rituals around it.</p>
             </div>
           </div>
-          <div class="story-carried-details">
-            <p><span>Phrase you gave us</span><strong data-carried-phrase>Nothing yet</strong></p>
-            <p><span>Place you gave us</span><strong data-carried-place>Nothing yet</strong></p>
-            <p><span>Tiny detail you gave us</span><strong data-carried-detail>Nothing yet</strong></p>
+          <div class="story-carried-details story-carried-details-single">
+            <p><span>EARLY DETAIL</span><strong data-carried-detail>Nothing yet</strong></p>
           </div>
           <div class="story-field-grid">
             <label class="story-field full">
@@ -283,6 +285,15 @@
                 <option>Use the language the story actually uses</option>
               </select>
             </label>
+            <label class="story-field">
+              <span>Vocal preference?</span>
+              <select data-story="vocal_preference">
+                <option value="">Let the song decide</option>
+                <option>Female voice</option>
+                <option>Male voice</option>
+                <option>Either is fine</option>
+              </select>
+            </label>
             <label class="story-field full">
               <span>Anything else you need the songwriter to know before touching this story?</span>
               <textarea data-story="anything_else" placeholder="This box is for the thing that did not fit anywhere else."></textarea>
@@ -294,10 +305,11 @@
           <div>
             <p class="v2-overline">YOU DO NOT HAVE TO MAKE IT PERFECT</p>
             <h2 data-finish-title>This is enough to start hearing the song.</h2>
-            <p data-finish-copy>Everything here saves automatically on this device. You can leave, come back, rewrite, ramble, and change your mind.</p>
+            <p data-finish-copy>Everything here saves on this device while you work. When it feels ready, send the room into your private creation queue.</p>
           </div>
           <div class="story-finish-actions">
-            <button type="button" class="story-save-button" data-save-now>Save my story</button>
+            <button type="button" class="story-save-button" data-submit-story>Send my story to creation →</button>
+            <p class="story-submit-status" data-submit-status role="status" aria-live="polite"></p>
             <a href="#anchor">Read it through again</a>
           </div>
         </section>
